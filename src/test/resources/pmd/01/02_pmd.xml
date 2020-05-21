@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+  version="6.21.0" timestamp="2020-05-21T17:02:39.257">
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\test\java\de\kekru\nociplugin\testutils\AbstractIntegrationTest.java">
+    <violation beginline="9" endline="9" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.testutils" class="AbstractIntegrationTest" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'java.nio.file.Paths'
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\test\java\de\kekru\nociplugin\testutils\TestServiceRegistry.java">
+    <violation beginline="17" endline="17" begincolumn="7" endcolumn="49" rule="GuardLogStatement" ruleset="Best Practices" package="de.kekru.nociplugin.testutils" class="TestServiceRegistry" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+      Logger calls should be surrounded by log level guards.
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\test\java\de\kekru\nociplugin\testutils\TestShellExecutor.java">
+    <violation beginline="16" endline="16" begincolumn="18" endcolumn="34" rule="BeanMembersShouldSerialize" ruleset="Error Prone" package="de.kekru.nociplugin.testutils" class="TestShellExecutor" variable="mockedGitCommitId" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#beanmembersshouldserialize" priority="3">
+      Found non-transient, non-static member. Please mark as transient or provide accessors.
+    </violation>
+    <violation beginline="22" endline="22" begincolumn="9" endcolumn="44" rule="PositionLiteralsFirstInComparisons" ruleset="Best Practices" package="de.kekru.nociplugin.testutils" class="TestShellExecutor" method="execute" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#positionliteralsfirstincomparisons" priority="3">
+      Position literals first in String comparisons
+    </violation>
+    <violation beginline="23" endline="23" begincolumn="7" endcolumn="68" rule="GuardLogStatement" ruleset="Best Practices" package="de.kekru.nociplugin.testutils" class="TestShellExecutor" method="execute" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#guardlogstatement" priority="2">
+      Logger calls should be surrounded by log level guards.
+    </violation>
+  </file>
+</pmd>

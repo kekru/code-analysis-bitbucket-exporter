@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+  version="6.21.0" timestamp="2020-05-21T16:55:40.806">
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\main\java\de\kekru\nociplugin\bitbucket\BitbucketService.java">
+    <violation beginline="3" endline="3" begincolumn="1" endcolumn="49" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.bitbucket" class="BitbucketService" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'com.cdancy.bitbucket.rest.BitbucketClient'
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\main\java\de\kekru\nociplugin\config\ConfigProvider.java">
+    <violation beginline="3" endline="3" begincolumn="1" endcolumn="51" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.config" class="ConfigProvider" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'de.kekru.nociplugin.serviceregistry.Service'
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\main\java\de\kekru\nociplugin\reporter\PmdReporter.java">
+    <violation beginline="6" endline="6" begincolumn="1" endcolumn="67" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.reporter" class="PmdReporter" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'com.cdancy.bitbucket.rest.domain.insights.InsightReportData'
+    </violation>
+    <violation beginline="16" endline="16" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.reporter" class="PmdReporter" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'java.time.LocalDate'
+    </violation>
+    <violation beginline="17" endline="17" begincolumn="1" endcolumn="24" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.reporter" class="PmdReporter" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'java.util.Arrays'
+    </violation>
+    <violation beginline="91" endline="91" begincolumn="46" endcolumn="52" rule="AvoidReassigningParameters" ruleset="Best Practices" package="de.kekru.nociplugin.reporter" class="PmdReporter" method="rulesetToType" variable="ruleset" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#avoidreassigningparameters" priority="2">
+      Avoid reassigning parameters such as 'ruleset'
+    </violation>
+    <violation beginline="92" endline="92" begincolumn="15" endcolumn="42" rule="UseLocaleWithCaseConversions" ruleset="Error Prone" package="de.kekru.nociplugin.reporter" class="PmdReporter" method="rulesetToType" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#uselocalewithcaseconversions" priority="3">
+      When doing a String.toLowerCase()/toUpperCase() call, use a Locale
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\main\java\de\kekru\nociplugin\reporter\SpotbugsReporter.java">
+    <violation beginline="5" endline="5" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.reporter" class="SpotbugsReporter" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'de.kekru.nociplugin.pmd.Pmd'
+    </violation>
+    <violation beginline="29" endline="29" begincolumn="5" endcolumn="22" rule="SystemPrintln" ruleset="Best Practices" package="de.kekru.nociplugin.reporter" class="SpotbugsReporter" method="getBitbucketReport" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#systemprintln" priority="2">
+      System.out.println is used
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\main\java\de\kekru\nociplugin\serviceregistry\ServiceRegistry.java">
+    <violation beginline="5" endline="5" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Best Practices" package="de.kekru.nociplugin.serviceregistry" class="ServiceRegistry" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports" priority="4">
+      Avoid unused imports such as 'java.lang.reflect.Method'
+    </violation>
+    <violation beginline="62" endline="62" begincolumn="12" endcolumn="18" rule="UnusedLocalVariable" ruleset="Best Practices" package="de.kekru.nociplugin.serviceregistry" class="ServiceRegistry" variable="service" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+      Avoid unused local variables such as 'service'.
+    </violation>
+  </file>
+  <file name="C:\Users\krummenauer\workspace\no-ci-plugin\src\main\java\de\kekru\nociplugin\shell\ShellExecutorService.java">
+    <violation beginline="18" endline="71" begincolumn="12" endcolumn="81" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="de.kekru.nociplugin.shell" class="ShellExecutorService" method="execute" variable="commandJoined" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+      Found 'DU'-anomaly for variable 'commandJoined' (lines '18'-'71').
+    </violation>
+    <violation beginline="28" endline="31" begincolumn="7" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="de.kekru.nociplugin.shell" class="ShellExecutorService" method="execute" variable="process" externalInfoUrl="https://pmd.github.io/pmd-6.21.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+      Found 'DD'-anomaly for variable 'process' (lines '28'-'31').
+    </violation>
+  </file>
+</pmd>

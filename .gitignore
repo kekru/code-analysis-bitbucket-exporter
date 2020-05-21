@@ -1,0 +1,13 @@
+Chrome Extension.zip
+temp
+.gradle
+.settings
+build
+.classpath
+.project
+bin
+.vscode
+.idea
+.scannerwork
+generated/
+no-ci-plugin.yml
