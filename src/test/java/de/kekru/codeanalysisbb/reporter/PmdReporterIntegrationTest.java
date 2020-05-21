@@ -12,7 +12,7 @@ import com.cdancy.bitbucket.rest.domain.insights.Annotation.AnnotationType;
 import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT;
-import de.kekru.codeanalysisbb.Main;
+import de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter;
 import de.kekru.codeanalysisbb.testutils.AbstractIntegrationTest;
 import java.util.Comparator;
 import java.util.List;
@@ -31,7 +31,7 @@ public class PmdReporterIntegrationTest extends AbstractIntegrationTest {
 
   @Test
   public void testPmdReporting() {
-    new Main(serviceRegistry);
+    new CodeAnalysisBitbucketExporter(serviceRegistry);
 
     ArgumentCaptor<CreateInsightReport> insightReportCaptor = ArgumentCaptor
         .forClass(CreateInsightReport.class);

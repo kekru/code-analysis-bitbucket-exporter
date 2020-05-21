@@ -8,15 +8,19 @@ import de.kekru.codeanalysisbb.serviceregistry.ServiceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Main {
+public class CodeAnalysisBitbucketExporter {
 
-  private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+  private static final Logger LOG = LoggerFactory.getLogger(CodeAnalysisBitbucketExporter.class);
 
   public static void main(String[] args) {
-    new Main(new ServiceRegistry());
+    run();
   }
 
-  public Main(ServiceRegistry serviceRegistry) {
+  public static void run() {
+    new CodeAnalysisBitbucketExporter(new ServiceRegistry());
+  }
+
+  public CodeAnalysisBitbucketExporter(ServiceRegistry serviceRegistry) {
 
     serviceRegistry.get(Config.class)
         .getReporter()
