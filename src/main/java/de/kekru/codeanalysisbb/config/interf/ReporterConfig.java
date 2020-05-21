@@ -4,6 +4,7 @@ import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 
 public interface ReporterConfig {
 
+  String getStripBasePathInputXml();
   boolean isEnabled();
   String getKey();
   String getTitle();

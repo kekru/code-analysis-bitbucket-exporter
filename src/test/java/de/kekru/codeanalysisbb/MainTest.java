@@ -1,16 +1,21 @@
 package de.kekru.codeanalysisbb;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import com.cdancy.bitbucket.rest.domain.insights.Annotation;
+import com.cdancy.bitbucket.rest.domain.insights.Annotation.AnnotationSeverity;
+import com.cdancy.bitbucket.rest.domain.insights.Annotation.AnnotationType;
 import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT;
 import de.kekru.codeanalysisbb.testutils.AbstractIntegrationTest;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
@@ -55,8 +60,36 @@ public class MainTest extends AbstractIntegrationTest {
     assertEquals(RESULT.PASS, report.result());
 
     // Check annotations
-    List<Annotation> annotations = annotationsCaptor.getValue().annotations();
+    List<Annotation> annotations = annotationsCaptor.getValue()
+        .annotations()
+        .stream()
+        .sorted(Comparator
+            .comparing(Annotation::path)
+            .thenComparing(Comparator.comparing(Annotation::line))
+            .thenComparing(Comparator.comparing(Annotation::message)))
+        .collect(Collectors.toList());
     assertEquals(18, annotations.size());
+
+    Annotation a00 = annotations.get(0);
+    assertNotNull(a00.reportKey());
+    assertNotNull(a00.externalId());
+    assertEquals("https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports", a00.link());
+    assertEquals("Avoid unused imports such as 'com.cdancy.bitbucket.rest.BitbucketClient' (UnusedImports)", a00.message().trim());
+    assertEquals("src/main/java/de/kekru/nociplugin/bitbucket/BitbucketService.java", a00.path());
+    assertEquals(3, a00.line());
+    assertEquals(AnnotationSeverity.LOW, a00.severity());
+    assertEquals(AnnotationType.CODE_SMELL, a00.type());
+
+    Annotation a17 = annotations.get(17);
+    assertNotNull(a17.reportKey());
+    assertNotNull(a17.externalId());
+    assertEquals("https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#guardlogstatement", a17.link());
+    assertEquals("Logger calls should be surrounded by log level guards. (GuardLogStatement)", a17.message().trim());
+    assertEquals("src/test/java/de/kekru/nociplugin/testutils/TestShellExecutor.java", a17.path());
+    assertEquals(23, a17.line());
+    assertEquals(AnnotationSeverity.HIGH, a17.severity());
+    assertEquals(AnnotationType.CODE_SMELL, a17.type());
+
   }
 
 }

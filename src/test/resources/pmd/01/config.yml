@@ -9,6 +9,7 @@ reporter:
     inputXmls:
       - "src/test/resources/pmd/01/01_pmd.xml"
       - "src/test/resources/pmd/01/02_pmd.xml"
+    stripBasePathInputXml: C:\Users\krummenauer\workspace\no-ci-plugin
     key: pmd-key
     title: PMD Code Analysis Report
     reporter: PMD

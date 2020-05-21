@@ -2,6 +2,7 @@ package de.kekru.codeanalysisbb.bitbucket.datamodel;
 
 import com.cdancy.bitbucket.rest.domain.insights.InsightReportData;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
+import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
 import java.util.LinkedList;
 import java.util.List;
 import lombok.Builder;
@@ -10,6 +11,8 @@ import lombok.Data;
 @Data
 @Builder
 public class BitbucketReport {
+
+  private final ReporterConfig reporterConfig;
 
   private final String details;
 

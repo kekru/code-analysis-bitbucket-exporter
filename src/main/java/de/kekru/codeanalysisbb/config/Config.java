@@ -46,6 +46,7 @@ public class Config {
   @Data
   public static class PmdConfig implements ReporterConfig {
     private List<String> inputXmls = new LinkedList<>();
+    private String stripBasePathInputXml;
     private boolean enabled = true;
     private String key;
     private String title;
@@ -61,6 +62,7 @@ public class Config {
   @Data
   public static class SpotbugsConfig implements ReporterConfig {
     private List<String> inputXmls = new LinkedList<>();
+    private String stripBasePathInputXml;
     private boolean enabled = true;
     private String key;
     private String title;

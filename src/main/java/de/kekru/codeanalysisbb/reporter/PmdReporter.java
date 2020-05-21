@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.xml.bind.JAXBContext;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +35,7 @@ public class PmdReporter implements Reporter {
         .count();
 
     return BitbucketReport.builder()
+        .reporterConfig(config.getReporter().getPmd())
         .details("PMD Report")
         .annotations(annotations)
         .result(hasHighSeverityErrors > 0 ? PASS : FAIL)
@@ -69,7 +71,7 @@ public class PmdReporter implements Reporter {
   }
 
   private String createMessage(String rule, String value) {
-    return String.format("%s (%s)", value, rule)
+    return String.format("%s (%s)", StringUtils.trimToEmpty(value), StringUtils.trimToEmpty(rule))
         .replace("\r", "")
         .replace("\n", "");
   }
