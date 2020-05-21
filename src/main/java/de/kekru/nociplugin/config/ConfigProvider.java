@@ -50,7 +50,7 @@ public class ConfigProvider implements ServiceProvider<Config> {
       configFile = "no-ci-plugin.yml";
     }
 
-    File yamlConfigFile = new File(configFile);
+    File yamlConfigFile = new File(configFile).getAbsoluteFile();
 
     try {
       Yaml yaml = new Yaml(new Constructor(Config.class));
