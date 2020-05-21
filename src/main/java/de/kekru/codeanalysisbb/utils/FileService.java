@@ -8,10 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 public class FileService {
 
   public String relativizeAndCleanupPath(String target, List<String> stripPathPrefixes) {
-    String modifiedTarget = replaceBackslashes(target).trim();
+    String modifiedTarget = replaceBackslashesAndTrim(target);
 
     for (String prefix : stripPathPrefixes) {
-      String prefixModified = replaceBackslashes(prefix).trim();
+      String prefixModified = replaceBackslashesAndTrim(prefix);
 
       if (StringUtils.startsWith(modifiedTarget, prefixModified)) {
         modifiedTarget = StringUtils.removeStart(modifiedTarget, prefixModified);
@@ -21,7 +21,7 @@ public class FileService {
     return StringUtils.removeStart(modifiedTarget, "/");
   }
 
-  private String replaceBackslashes(String relativeFileName) {
-    return StringUtils.replace(relativeFileName, "\\", "/");
+  private String replaceBackslashesAndTrim(String relativeFileName) {
+    return StringUtils.replace(StringUtils.trimToEmpty(relativeFileName), "\\", "/");
   }
 }

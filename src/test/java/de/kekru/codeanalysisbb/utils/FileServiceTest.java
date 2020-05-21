@@ -75,6 +75,15 @@ public class FileServiceTest {
             ),
             "de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
+        {
+            "/home/someone/src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java",
+            Arrays.asList(
+                null,
+                "",
+                "/home/someone"
+            ),
+            "src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
+        },
     });
   }
 
