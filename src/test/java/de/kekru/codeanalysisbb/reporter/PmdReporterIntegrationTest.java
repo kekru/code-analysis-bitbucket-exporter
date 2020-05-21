@@ -1,4 +1,4 @@
-package de.kekru.codeanalysisbb;
+package de.kekru.codeanalysisbb.reporter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -12,6 +12,7 @@ import com.cdancy.bitbucket.rest.domain.insights.Annotation.AnnotationType;
 import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT;
+import de.kekru.codeanalysisbb.Main;
 import de.kekru.codeanalysisbb.testutils.AbstractIntegrationTest;
 import java.util.Comparator;
 import java.util.List;
@@ -19,14 +20,14 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 
-public class MainTest extends AbstractIntegrationTest {
+public class PmdReporterIntegrationTest extends AbstractIntegrationTest {
 
-  public MainTest() {
+  public PmdReporterIntegrationTest() {
     super("src/test/resources/pmd/01/config.yml");
   }
 
   @Test
-  public void test() {
+  public void testPmdReporting() {
     new Main(serviceRegistry);
 
     ArgumentCaptor<CreateInsightReport> insightReportCaptor = ArgumentCaptor
