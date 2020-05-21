@@ -61,7 +61,7 @@ public class PmdReporterIntegrationTest extends AbstractIntegrationTest {
     assertEquals("https://pmd.github.io", report.link());
     assertEquals("https://pmd.github.io/img/pmd_logo.png", report.logoUrl());
     assertEquals(0, report.data().size());
-    assertEquals(RESULT.PASS, report.result());
+    assertEquals(RESULT.FAIL, report.result());
 
     // Check annotations
     List<Annotation> annotations = annotationsCaptor.getValue()

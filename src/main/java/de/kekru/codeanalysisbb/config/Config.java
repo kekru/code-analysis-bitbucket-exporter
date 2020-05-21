@@ -51,7 +51,6 @@ public class Config {
     private String key;
     private String title;
     private String reporter;
-    private String logoUrl;
 
     @Override
     public Class<? extends Reporter> getReporterService() {
@@ -67,7 +66,6 @@ public class Config {
     private String key;
     private String title;
     private String reporter;
-    private String logoUrl;
 
     @Override
     public Class<? extends Reporter> getReporterService() {

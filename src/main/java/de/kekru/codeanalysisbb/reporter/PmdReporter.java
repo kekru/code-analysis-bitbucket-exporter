@@ -38,7 +38,7 @@ public class PmdReporter implements Reporter {
         .reporterConfig(config.getReporter().getPmd())
         .details("PMD Report")
         .annotations(annotations)
-        .result(hasHighSeverityErrors > 0 ? PASS : FAIL)
+        .result(hasHighSeverityErrors == 0 ? PASS : FAIL)
         .link("https://pmd.github.io")
         .logoUrl("https://pmd.github.io/img/pmd_logo.png")
         .build();

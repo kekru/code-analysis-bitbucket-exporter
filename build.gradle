@@ -4,6 +4,7 @@ plugins {
     id 'application'
     id "org.sonarqube" version "2.6.2"
     id 'org.gradle.java'
+    id 'org.gradle.maven-publish'
     id 'org.gradle.jacoco'
     id 'java'
     id 'pmd'
@@ -34,16 +35,6 @@ dependencies {
     implementation "org.slf4j:slf4j-simple:1.7.9"
     implementation "org.yaml:snakeyaml:1.26"
     implementation "com.cdancy:bitbucket-rest:2.6.2"
-   /* implementation "com.atlassian.bitbucket.server:bitbucket-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-spi:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-git-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-build-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-branch-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-comment-likes-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-jira-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-ssh-api:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-scm-common:${bitbucketServerVersion}"
-    implementation "com.atlassian.bitbucket.server:bitbucket-web-common:${bitbucketServerVersion}"*/
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-all:1.10.19'
@@ -107,6 +98,17 @@ jar {
 
 application {
     mainClassName = 'de.kekru.codeanalysisbb.Main'
+}
+
+publishing {
+    publications {
+        pluginPublication (MavenPublication) {
+            from        components.java
+            groupId     project.group
+            artifactId  project.name
+            version     project.version
+        }
+    }
 }
 
 

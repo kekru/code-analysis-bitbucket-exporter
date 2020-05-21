@@ -23,7 +23,11 @@ public class ConfigProvider implements ServiceProvider<Config> {
       config = readFromYaml();
 
       if (config.getWorkDir() == null) {
-        config.setWorkDir(Paths.get(".").toAbsolutePath().normalize());
+        String workDir = System.getProperty("workDir");
+        if (StringUtils.isEmpty(workDir)) {
+          workDir = ".";
+        }
+        config.setWorkDir(Paths.get(workDir).toAbsolutePath().normalize());
       }
 
       config.getBitbucket().setCommitId(getCommitId());
