@@ -64,13 +64,13 @@ clean {
 
 task generateXmlClasses {
     inputs.files pmdXsd, spotbugsXsd
-    outputs.dir "src/generated/java/de/kekru/nociplugin"
+    outputs.dir "src/generated/java/de/kekru/codeanalysisbb"
     doLast {
-        "xjc -encoding UTF-8 -d src/generated/java -p de.kekru.nociplugin.pmd ${pmdXsd.absolutePath}"
+        "xjc -encoding UTF-8 -d src/generated/java -p de.kekru.codeanalysisbb.generated.pmd ${pmdXsd.absolutePath}"
             .execute()
             .waitForProcessOutput(System.out, System.err)
 
-        "xjc -encoding UTF-8 -d src/generated/java -p de.kekru.nociplugin.spotbugs ${spotbugsXsd.absolutePath}"
+        "xjc -encoding UTF-8 -d src/generated/java -p de.kekru.codeanalysisbb.generated.spotbugs ${spotbugsXsd.absolutePath}"
                 .execute()
                 .waitForProcessOutput(System.out, System.err)
     }
@@ -106,7 +106,7 @@ jar {
 }
 
 application {
-    mainClassName = 'de.kekru.nociplugin.Main'
+    mainClassName = 'de.kekru.codeanalysisbb.Main'
 }
 
 
@@ -120,7 +120,7 @@ sonarqube {
         property "sonar.login", ""
         property "sonar.analysis.mode", "preview"
         property "sonar.issuesReport.html.enable", "true"
-        property "sonar.projectKey", "no-ci-plugin"
+        property "sonar.projectKey", "code-analysis-bb"
     }
 }
 

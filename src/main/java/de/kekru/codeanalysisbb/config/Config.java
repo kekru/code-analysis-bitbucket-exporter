@@ -1,10 +1,10 @@
-package de.kekru.nociplugin.config;
+package de.kekru.codeanalysisbb.config;
 
-import de.kekru.nociplugin.config.interf.ReporterConfig;
-import de.kekru.nociplugin.reporter.SpotbugsReporter;
-import de.kekru.nociplugin.reporter.PmdReporter;
-import de.kekru.nociplugin.reporter.interf.Reporter;
-import de.kekru.nociplugin.serviceregistry.Service;
+import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
+import de.kekru.codeanalysisbb.reporter.SpotbugsReporter;
+import de.kekru.codeanalysisbb.reporter.PmdReporter;
+import de.kekru.codeanalysisbb.reporter.interf.Reporter;
+import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;

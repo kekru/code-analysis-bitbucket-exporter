@@ -1,4 +1,4 @@
-package de.kekru.nociplugin.bitbucket.datamodel;
+package de.kekru.codeanalysisbb.bitbucket.datamodel;
 
 import com.cdancy.bitbucket.rest.domain.insights.Annotation;
 import com.cdancy.bitbucket.rest.domain.insights.Annotation.AnnotationSeverity;

@@ -1,6 +1,6 @@
-package de.kekru.nociplugin.testutils;
+package de.kekru.codeanalysisbb.testutils;
 
-import de.kekru.nociplugin.shell.ShellExecutorService;
+import de.kekru.codeanalysisbb.shell.ShellExecutorService;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Setter;

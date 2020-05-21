@@ -1,15 +1,14 @@
-package de.kekru.nociplugin.bitbucket;
+package de.kekru.codeanalysisbb.bitbucket;
 
-import com.cdancy.bitbucket.rest.BitbucketClient;
 import com.cdancy.bitbucket.rest.features.InsightsApi;
 import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketAnnotation;
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketReport;
-import de.kekru.nociplugin.config.Config;
-import de.kekru.nociplugin.config.Config.BitbucketConfig;
-import de.kekru.nociplugin.config.interf.ReporterConfig;
-import de.kekru.nociplugin.serviceregistry.Service;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
+import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.config.Config.BitbucketConfig;
+import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
+import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;

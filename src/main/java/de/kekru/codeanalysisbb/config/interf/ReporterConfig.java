@@ -1,6 +1,6 @@
-package de.kekru.nociplugin.config.interf;
+package de.kekru.codeanalysisbb.config.interf;
 
-import de.kekru.nociplugin.reporter.interf.Reporter;
+import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 
 public interface ReporterConfig {
 

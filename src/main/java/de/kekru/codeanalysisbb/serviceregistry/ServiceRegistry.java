@@ -1,8 +1,7 @@
-package de.kekru.nociplugin.serviceregistry;
+package de.kekru.codeanalysisbb.serviceregistry;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

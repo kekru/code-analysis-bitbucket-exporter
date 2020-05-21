@@ -1,4 +1,4 @@
-package de.kekru.nociplugin.serviceregistry;
+package de.kekru.codeanalysisbb.serviceregistry;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,10 +1,10 @@
-package de.kekru.nociplugin;
+package de.kekru.codeanalysisbb;
 
-import de.kekru.nociplugin.bitbucket.BitbucketService;
-import de.kekru.nociplugin.config.Config;
-import de.kekru.nociplugin.config.interf.ReporterConfig;
-import de.kekru.nociplugin.reporter.interf.Reporter;
-import de.kekru.nociplugin.serviceregistry.ServiceRegistry;
+import de.kekru.codeanalysisbb.bitbucket.BitbucketService;
+import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
+import de.kekru.codeanalysisbb.reporter.interf.Reporter;
+import de.kekru.codeanalysisbb.serviceregistry.ServiceRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

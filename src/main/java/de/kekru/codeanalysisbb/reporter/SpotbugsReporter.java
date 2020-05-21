@@ -1,11 +1,10 @@
-package de.kekru.nociplugin.reporter;
+package de.kekru.codeanalysisbb.reporter;
 
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketReport;
-import de.kekru.nociplugin.config.Config;
-import de.kekru.nociplugin.pmd.Pmd;
-import de.kekru.nociplugin.reporter.interf.Reporter;
-import de.kekru.nociplugin.serviceregistry.Service;
-import de.kekru.nociplugin.spotbugs.BugCollection;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
+import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.reporter.interf.Reporter;
+import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.codeanalysisbb.generated.spotbugs.BugCollection;
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;

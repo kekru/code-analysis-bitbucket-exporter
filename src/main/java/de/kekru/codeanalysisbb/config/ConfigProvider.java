@@ -1,7 +1,7 @@
-package de.kekru.nociplugin.config;
+package de.kekru.codeanalysisbb.config;
 
-import de.kekru.nociplugin.serviceregistry.ServiceProvider;
-import de.kekru.nociplugin.shell.ShellExecutorService;
+import de.kekru.codeanalysisbb.serviceregistry.ServiceProvider;
+import de.kekru.codeanalysisbb.shell.ShellExecutorService;
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.file.Paths;
@@ -47,7 +47,7 @@ public class ConfigProvider implements ServiceProvider<Config> {
 
     String configFile = System.getProperty("configFile");
     if (configFile == null) {
-      configFile = "no-ci-plugin.yml";
+      configFile = "code-analysis-bb.yml";
     }
 
     File yamlConfigFile = new File(configFile).getAbsoluteFile();

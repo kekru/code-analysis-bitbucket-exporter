@@ -1,4 +1,4 @@
-package de.kekru.nociplugin.testutils;
+package de.kekru.codeanalysisbb.testutils;
 
 import java.util.function.BiFunction;
 import java.util.function.Consumer;

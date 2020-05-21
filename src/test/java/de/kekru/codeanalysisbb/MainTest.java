@@ -1,4 +1,4 @@
-package de.kekru.nociplugin;
+package de.kekru.codeanalysisbb;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.eq;
@@ -9,7 +9,7 @@ import com.cdancy.bitbucket.rest.domain.insights.Annotation;
 import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT;
-import de.kekru.nociplugin.testutils.AbstractIntegrationTest;
+import de.kekru.codeanalysisbb.testutils.AbstractIntegrationTest;
 import java.util.List;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;

@@ -11,3 +11,4 @@ bin
 .scannerwork
 generated/
 no-ci-plugin.yml
+code-analysis-bb.yml

@@ -1,20 +1,17 @@
-package de.kekru.nociplugin.reporter;
+package de.kekru.codeanalysisbb.reporter;
 
 import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.FAIL;
 import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.PASS;
 
-import com.cdancy.bitbucket.rest.domain.insights.InsightReportData;
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketAnnotation;
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketAnnotation.BitbucketSeverity;
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketAnnotation.BitbucketType;
-import de.kekru.nociplugin.bitbucket.datamodel.BitbucketReport;
-import de.kekru.nociplugin.config.Config;
-import de.kekru.nociplugin.pmd.Pmd;
-import de.kekru.nociplugin.reporter.interf.Reporter;
-import de.kekru.nociplugin.serviceregistry.Service;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketSeverity;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketType;
+import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
+import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.generated.pmd.Pmd;
+import de.kekru.codeanalysisbb.reporter.interf.Reporter;
+import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.io.File;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.xml.bind.JAXBContext;
@@ -55,7 +52,7 @@ public class PmdReporter implements Reporter {
         .collect(Collectors.toList());
   }
 
-  private List<BitbucketAnnotation> toAnnotation(de.kekru.nociplugin.pmd.File pmdFile) {
+  private List<BitbucketAnnotation> toAnnotation(de.kekru.codeanalysisbb.generated.pmd.File pmdFile) {
     return pmdFile.getViolation()
         .stream()
         .map(v ->

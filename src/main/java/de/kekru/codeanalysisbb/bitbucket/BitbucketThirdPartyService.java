@@ -1,10 +1,10 @@
-package de.kekru.nociplugin.bitbucket;
+package de.kekru.codeanalysisbb.bitbucket;
 
 import com.cdancy.bitbucket.rest.BitbucketClient;
 import com.cdancy.bitbucket.rest.features.InsightsApi;
-import de.kekru.nociplugin.config.Config;
-import de.kekru.nociplugin.config.Config.BitbucketConfig;
-import de.kekru.nociplugin.serviceregistry.Service;
+import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.config.Config.BitbucketConfig;
+import de.kekru.codeanalysisbb.serviceregistry.Service;
 import lombok.RequiredArgsConstructor;
 
 @Service

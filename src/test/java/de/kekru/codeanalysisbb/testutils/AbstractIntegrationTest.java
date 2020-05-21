@@ -1,11 +1,10 @@
-package de.kekru.nociplugin.testutils;
+package de.kekru.codeanalysisbb.testutils;
 
 import static org.mockito.Mockito.mock;
 
 import com.cdancy.bitbucket.rest.features.InsightsApi;
-import de.kekru.nociplugin.bitbucket.BitbucketThirdPartyService;
-import de.kekru.nociplugin.config.Config;
-import de.kekru.nociplugin.shell.ShellExecutorService;
+import de.kekru.codeanalysisbb.bitbucket.BitbucketThirdPartyService;
+import de.kekru.codeanalysisbb.shell.ShellExecutorService;
 import lombok.RequiredArgsConstructor;
 import org.junit.Before;
 import org.junit.Rule;

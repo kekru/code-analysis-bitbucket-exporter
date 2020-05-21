@@ -1,6 +1,6 @@
-# no-ci-plugin
+# Code Analysis Bitbucket Exporter
 
-CI Integration zwischen Bitbucket, Jenkins, Sonar... nur über Http Apis und keine Plugins  
+Send analysis reports of PMD, checkstyle and others to Bitbucket Insights - via API, no plugin installation required
 
 Based on [cdancy/bitbucket-rest](https://github.com/cdancy/bitbucket-rest)
 
@@ -12,6 +12,8 @@ Based on [cdancy/bitbucket-rest](https://github.com/cdancy/bitbucket-rest)
 
 
 ## Example Configuration
+
+`code-analysis-bb.yml`
 
 ```yml
 bitbucket:
@@ -25,7 +27,7 @@ reporter:
     inputXmls:
       - "build/reports/pmd/main.xml"
       - "build/reports/pmd/test.xml"
-    key: no-ci-plugin pmd
+    key: pmd-analysis
     title: PMD Code Analysis Report
     reporter: PMD
 ```
