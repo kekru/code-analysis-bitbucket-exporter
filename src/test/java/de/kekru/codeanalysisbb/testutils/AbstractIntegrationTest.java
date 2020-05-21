@@ -9,14 +9,11 @@ import lombok.RequiredArgsConstructor;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RequiredArgsConstructor
-@RunWith(MockitoJUnitRunner.class)
 public class AbstractIntegrationTest {
 
   private final String configFile;

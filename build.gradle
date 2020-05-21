@@ -164,3 +164,13 @@ spotbugs {
     toolVersion = '4.0.3'
     ignoreFailures = true
 }
+
+
+checkstyleGenerated.enabled = false
+checkstyleMain.enabled = false
+checkstyleTest.enabled = false
+pmdMain.enabled = false
+pmdTest.enabled = false
+spotbugsGenerated.enabled = false
+spotbugsMain.enabled = false
+spotbugsTest.enabled = false
