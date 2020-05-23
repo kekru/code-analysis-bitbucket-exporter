@@ -16,6 +16,9 @@ public class PropertyLoaderServiceTest {
 
     // Given
     Map<String, String> props = new HashMap<>();
+    props.put("codeanalysisbb.workDir", "/home/me/helloworld123");
+    props.put("workDir", "/notused");
+
     props.put("codeanalysisbb.bitbucket.endPoint", "https://bitbucket.example.com");
     props.put("codeanalysisbb.bitbucket.token", "Sometoken");
     props.put("codeanalysisbb.bitbucket.project", "some-project");
@@ -40,6 +43,8 @@ public class PropertyLoaderServiceTest {
     propertyLoaderService.applyConfigProperties(config, props, ".", "codeanalysisbb");
 
     // Then
+    assertEquals("/home/me/helloworld123", config.getWorkDir().replace("\\", "/"));
+
     assertEquals("https://bitbucket.example.com", config.getBitbucket().getEndPoint());
     assertEquals("Sometoken", config.getBitbucket().getToken());
     assertEquals("some-project", config.getBitbucket().getProject());

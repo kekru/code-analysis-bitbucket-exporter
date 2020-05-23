@@ -1,11 +1,10 @@
 package de.kekru.codeanalysisbb.config;
 
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
-import de.kekru.codeanalysisbb.reporter.SpotbugsReporter;
 import de.kekru.codeanalysisbb.reporter.PmdReporter;
+import de.kekru.codeanalysisbb.reporter.SpotbugsReporter;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
-import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -17,7 +16,7 @@ import lombok.Data;
 @Service(providedBy = ConfigProvider.class)
 public class Config {
 
-  private Path workDir;
+  private String workDir;
   private BitbucketConfig bitbucket = new BitbucketConfig();
   private ReporterConfigs reporter = new ReporterConfigs();
 

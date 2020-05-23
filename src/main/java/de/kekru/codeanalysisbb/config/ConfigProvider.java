@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.yaml.snakeyaml.Yaml;
@@ -16,20 +17,20 @@ public class ConfigProvider implements ServiceProvider<Config> {
 
   private Config config;
   private final ShellExecutorService shellExecutorService;
+  private final PropertyLoaderService propertyLoaderService;
+
+  private static final String PROPERTY_PREFIX = "codeanalysisbb";
 
   @Override
   public Config getService() {
     if (config == null) {
       config = readFromYaml();
+      overrideWithEnvVars(config);
+      overrideWithSystemProperties(config);
 
-      if (config.getWorkDir() == null) {
-        String workDir = System.getProperty("workDir");
-        if (StringUtils.isEmpty(workDir)) {
-          workDir = ".";
-        }
-        config.setWorkDir(Paths.get(workDir).toAbsolutePath().normalize());
+      if (StringUtils.isBlank(config.getWorkDir())) {
+        config.setWorkDir(Paths.get(".").toAbsolutePath().normalize().toString());
       }
-
       config.getBitbucket().setCommitId(getCommitId());
     }
 
@@ -45,6 +46,24 @@ public class ConfigProvider implements ServiceProvider<Config> {
     }
 
     return commitId;
+  }
+
+  private void overrideWithEnvVars(Config config) {
+    propertyLoaderService.applyConfigProperties(
+        config,
+        System.getenv(),
+        "_",
+        PROPERTY_PREFIX
+    );
+  }
+
+  private void overrideWithSystemProperties(Config config) {
+    propertyLoaderService.applyConfigProperties(
+        config,
+        new <String, String>HashMap(System.getProperties()),
+        ".",
+        PROPERTY_PREFIX
+    );
   }
 
   private Config readFromYaml() {
