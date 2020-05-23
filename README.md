@@ -27,7 +27,17 @@ reporter:
     inputXmls:
       - "build/reports/pmd/main.xml"
       - "build/reports/pmd/test.xml"
+    enabled: true
     key: pmd-analysis
     title: PMD Code Analysis Report
     reporter: PMD
+
+  spotbugs:
+    inputXmls:
+      - "build/reports/spotbugs/main.xml"
+      - "build/reports/spotbugs/main.xml"
+    enabled: true
+    key: spotbugs-key
+    title: Spotbugs Code Analysis Report
+    reporter: Spotbugs
 ```

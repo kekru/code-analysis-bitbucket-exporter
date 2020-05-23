@@ -1,0 +1,16 @@
+bitbucket:
+  endPoint: https://bitbucket.localhost
+  token: myToken
+  project: "some-project"
+  repo: "some-repo"
+
+reporter:
+  spotbugs:
+    inputXmls:
+      - "src/test/resources/spotbugs/01/01_spotbugs.xml"
+      - "src/test/resources/spotbugs/01/02_spotbugs.xml"
+    enabled: true
+    stripBasePathInputXml: C:\Users\krummenauer\workspace\example-code-analysis-bitbucket-exporter
+    key: spotbugs-key
+    title: Spotbugs Code Analysis Report
+    reporter: Spotbugs

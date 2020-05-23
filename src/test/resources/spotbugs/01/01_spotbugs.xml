@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.0.3" sequence="0" timestamp="1590251782958" analysisTimestamp="1590251782984" release="unspecified">
+  <Project projectName="example-code-analysis-bitbucket-exporter (spotbugsMain)">
+    <Jar>C:\Users\krummenauer\workspace\example-code-analysis-bitbucket-exporter\build\classes\java\main\de\kekru\example\codeanalysisbb\Main.class</Jar>
+    <Jar>C:\Users\krummenauer\workspace\example-code-analysis-bitbucket-exporter\build\classes\java\main\de\kekru\example\codeanalysisbb\SecondClass.class</Jar>
+    <AuxClasspathEntry>C:\Users\krummenauer\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-simple\1.7.9\f918aa891c5402deb6b4dc82862699bb82602a2e\slf4j-simple-1.7.9.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\krummenauer\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.25\da76ca59f6a57ee3102f8f9bd9cee742973efa8a\slf4j-api-1.7.25.jar</AuxClasspathEntry>
+    <SrcDir>C:\Users\krummenauer\workspace\example-code-analysis-bitbucket-exporter\src\main\resources</SrcDir>
+    <SrcDir>C:\Users\krummenauer\workspace\example-code-analysis-bitbucket-exporter\src\main\java</SrcDir>
+  </Project>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE" instanceHash="9de02933b5cbd2aceff52cb845612e0c" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to abc in new de.kekru.example.codeanalysisbb.Main()</LongMessage>
+    <Class classname="de.kekru.example.codeanalysisbb.Main" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="13" end="33" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+        <Message>At Main.java:[lines 13-33]</Message>
+      </SourceLine>
+      <Message>In class de.kekru.example.codeanalysisbb.Main</Message>
+    </Class>
+    <Method classname="de.kekru.example.codeanalysisbb.Main" name="&lt;init&gt;" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="19" end="24" startBytecode="0" endBytecode="15" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java"/>
+      <Message>In method new de.kekru.example.codeanalysisbb.Main()</Message>
+    </Method>
+    <LocalVariable name="abc" register="1" pc="34" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named abc</Message>
+    </LocalVariable>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.Main" primary="true" start="23" end="23" startBytecode="33" endBytecode="33" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+      <Message>At Main.java:[line 23]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="abc"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN" priority="2" rank="8" abbrev="IP" category="CORRECTNESS" instanceHash="5f07f0e719b33f23b392c3f8b62772b4" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>A parameter is dead upon entry to a method but overwritten</ShortMessage>
+    <LongMessage>The parameter input to de.kekru.example.codeanalysisbb.Main.modifyParameter(String) is dead upon entry but overwritten</LongMessage>
+    <Class classname="de.kekru.example.codeanalysisbb.Main" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="13" end="33" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+        <Message>At Main.java:[lines 13-33]</Message>
+      </SourceLine>
+      <Message>In class de.kekru.example.codeanalysisbb.Main</Message>
+    </Class>
+    <Method classname="de.kekru.example.codeanalysisbb.Main" name="modifyParameter" signature="(Ljava/lang/String;)V" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="27" end="28" startBytecode="0" endBytecode="2" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java"/>
+      <Message>In method de.kekru.example.codeanalysisbb.Main.modifyParameter(String)</Message>
+    </Method>
+    <LocalVariable name="input" register="1" pc="3" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named input</Message>
+    </LocalVariable>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.Main" primary="true" start="27" end="27" startBytecode="2" endBytecode="2" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+      <Message>At Main.java:[line 27]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="OBL_UNSATISFIED_OBLIGATION" priority="2" rank="20" abbrev="OBL" category="EXPERIMENTAL" instanceHash="75f66721778f94fb661cd76e87504221" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Method may fail to clean up stream or resource</ShortMessage>
+    <LongMessage>de.kekru.example.codeanalysisbb.Main.keepOpenStream() may fail to clean up java.io.InputStream</LongMessage>
+    <Class classname="de.kekru.example.codeanalysisbb.Main" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="13" end="33" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+        <Message>At Main.java:[lines 13-33]</Message>
+      </SourceLine>
+      <Message>In class de.kekru.example.codeanalysisbb.Main</Message>
+    </Class>
+    <Method classname="de.kekru.example.codeanalysisbb.Main" name="keepOpenStream" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="31" end="33" startBytecode="0" endBytecode="82" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java"/>
+      <Message>In method de.kekru.example.codeanalysisbb.Main.keepOpenStream()</Message>
+    </Method>
+    <Class classname="java.io.InputStream" role="CLASS_REFTYPE">
+      <SourceLine classname="java.io.InputStream" start="45" end="364" sourcefile="InputStream.java" sourcepath="java/io/InputStream.java">
+        <Message>At InputStream.java:[lines 45-364]</Message>
+      </SourceLine>
+      <Message>Reference type java.io.InputStream</Message>
+    </Class>
+    <Int value="1" role="INT_OBLIGATIONS_REMAINING">
+      <Message>1 instances of obligation remaining</Message>
+    </Int>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.Main" primary="true" start="31" end="31" startBytecode="13" endBytecode="13" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java" role="SOURCE_LINE_OBLIGATION_CREATED">
+      <Message>Obligation to clean up resource created at Main.java:[line 31] is not discharged</Message>
+    </SourceLine>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="32" end="32" startBytecode="17" endBytecode="17" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at Main.java:[line 32]</Message>
+    </SourceLine>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="33" end="33" startBytecode="22" endBytecode="22" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java" role="SOURCE_LINE_PATH_CONTINUES">
+      <Message>Path continues at Main.java:[line 33]</Message>
+    </SourceLine>
+    <String value="{InputStream x 1}" role="STRING_REMAINING_OBLIGATIONS">
+      <Message>Remaining obligations: {InputStream x 1}</Message>
+    </String>
+  </BugInstance>
+  <BugInstance type="OS_OPEN_STREAM" priority="2" rank="16" abbrev="OS" category="BAD_PRACTICE" instanceHash="652cd54629f03d06455f7a01af66c9a0" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Method may fail to close stream</ShortMessage>
+    <LongMessage>de.kekru.example.codeanalysisbb.Main.keepOpenStream() may fail to close stream</LongMessage>
+    <Class classname="de.kekru.example.codeanalysisbb.Main" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="13" end="33" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+        <Message>At Main.java:[lines 13-33]</Message>
+      </SourceLine>
+      <Message>In class de.kekru.example.codeanalysisbb.Main</Message>
+    </Class>
+    <Method classname="de.kekru.example.codeanalysisbb.Main" name="keepOpenStream" signature="()V" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.Main" start="31" end="33" startBytecode="0" endBytecode="11" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java"/>
+      <Message>In method de.kekru.example.codeanalysisbb.Main.keepOpenStream()</Message>
+    </Method>
+    <Type descriptor="Ljava/io/InputStream;" role="TYPE_CLOSEIT">
+      <SourceLine classname="java.io.InputStream" start="45" end="364" sourcefile="InputStream.java" sourcepath="java/io/InputStream.java">
+        <Message>At InputStream.java:[lines 45-364]</Message>
+      </SourceLine>
+      <Message>Need to close java.io.InputStream </Message>
+    </Type>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.Main" primary="true" start="31" end="31" startBytecode="0" endBytecode="0" sourcefile="Main.java" sourcepath="de/kekru/example/codeanalysisbb/Main.java" relSourcepath="java\de\kekru\example\codeanalysisbb\Main.java">
+      <Message>At Main.java:[line 31]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="NP_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD" priority="1" rank="14" abbrev="NP" category="STYLE" instanceHash="53ebed2a33899d37af203ff0eb31d5d1" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Read of unwritten public or protected field</ShortMessage>
+    <LongMessage>Read of unwritten public or protected field something in de.kekru.example.codeanalysisbb.SecondClass.getSomething()</LongMessage>
+    <Class classname="de.kekru.example.codeanalysisbb.SecondClass" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" start="9" end="14" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java">
+        <Message>At SecondClass.java:[lines 9-14]</Message>
+      </SourceLine>
+      <Message>In class de.kekru.example.codeanalysisbb.SecondClass</Message>
+    </Class>
+    <Method classname="de.kekru.example.codeanalysisbb.SecondClass" name="getSomething" signature="()I" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" start="14" end="14" startBytecode="0" endBytecode="49" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java"/>
+      <Message>In method de.kekru.example.codeanalysisbb.SecondClass.getSomething()</Message>
+    </Method>
+    <Field classname="de.kekru.example.codeanalysisbb.SecondClass" name="something" signature="Ljava/lang/Integer;" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java">
+        <Message>In SecondClass.java</Message>
+      </SourceLine>
+      <Message>Field de.kekru.example.codeanalysisbb.SecondClass.something</Message>
+    </Field>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" primary="true" start="14" end="14" startBytecode="4" endBytecode="4" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java">
+      <Message>At SecondClass.java:[line 14]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD" priority="2" rank="17" abbrev="UwF" category="STYLE" instanceHash="1b3d564eb2d3130c430847342e34cd9c" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Unwritten public or protected field</ShortMessage>
+    <LongMessage>Unwritten public or protected field: de.kekru.example.codeanalysisbb.SecondClass.something</LongMessage>
+    <Class classname="de.kekru.example.codeanalysisbb.SecondClass" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" start="9" end="14" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java">
+        <Message>At SecondClass.java:[lines 9-14]</Message>
+      </SourceLine>
+      <Message>In class de.kekru.example.codeanalysisbb.SecondClass</Message>
+    </Class>
+    <Field classname="de.kekru.example.codeanalysisbb.SecondClass" name="something" signature="Ljava/lang/Integer;" isStatic="false" primary="true">
+      <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java">
+        <Message>In SecondClass.java</Message>
+      </SourceLine>
+      <Message>Field de.kekru.example.codeanalysisbb.SecondClass.something</Message>
+    </Field>
+    <SourceLine classname="de.kekru.example.codeanalysisbb.SecondClass" primary="true" start="14" end="14" startBytecode="1" endBytecode="1" sourcefile="SecondClass.java" sourcepath="de/kekru/example/codeanalysisbb/SecondClass.java" relSourcepath="java\de\kekru\example\codeanalysisbb\SecondClass.java">
+      <Message>At SecondClass.java:[line 14]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="BAD_PRACTICE">
+    <Description>Bad practice</Description>
+  </BugCategory>
+  <BugCategory category="CORRECTNESS">
+    <Description>Correctness</Description>
+  </BugCategory>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="EXPERIMENTAL">
+    <Description>Experimental</Description>
+  </BugCategory>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD" abbrev="NP" category="STYLE">
+    <ShortDescription>Read of unwritten public or protected field</ShortDescription>
+    <Details><![CDATA[
+
+  <p> The program is dereferencing a public or protected
+field that does not seem to ever have a non-null value written to it.
+Unless the field is initialized via some mechanism not seen by the analysis,
+dereferencing this value will generate a null pointer exception.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN" abbrev="IP" category="CORRECTNESS" cweid="563">
+    <ShortDescription>A parameter is dead upon entry to a method but overwritten</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+The initial value of this parameter is ignored, and the parameter
+is overwritten here. This often indicates a mistaken belief that
+the write to the parameter will be conveyed back to
+the caller.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="UWF_UNWRITTEN_PUBLIC_OR_PROTECTED_FIELD" abbrev="UwF" category="STYLE">
+    <ShortDescription>Unwritten public or protected field</ShortDescription>
+    <Details><![CDATA[
+
+  <p> No writes were seen to this public/protected field.&nbsp; All reads of it will return the default
+value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="OBL_UNSATISFIED_OBLIGATION" abbrev="OBL" category="EXPERIMENTAL">
+    <ShortDescription>Method may fail to clean up stream or resource</ShortDescription>
+    <Details><![CDATA[
+
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          For sending feedback, check:
+          </p>
+          <ul>
+            <li><a href="https://github.com/spotbugs/spotbugs/blob/master/CONTRIBUTING.md">contributing guideline</a></li>
+            <li><a href="https://github.com/spotbugs/discuss/issues?q=">malinglist</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+
+      ]]></Details>
+  </BugPattern>
+  <BugPattern type="OS_OPEN_STREAM" abbrev="OS" category="BAD_PRACTICE">
+    <ShortDescription>Method may fail to close stream</ShortDescription>
+    <Details><![CDATA[
+
+<p> The method creates an IO stream object, does not assign it to any
+fields, pass it to other methods that might close it,
+or return it, and does not appear to close
+the stream on all paths out of the method.&nbsp; This may result in
+a file descriptor leak.&nbsp; It is generally a good
+idea to use a <code>finally</code> block to ensure that streams are
+closed.</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="NP" cweid="476">
+    <Description>Null pointer dereference</Description>
+  </BugCode>
+  <BugCode abbrev="OS">
+    <Description>Stream not closed on all paths</Description>
+  </BugCode>
+  <BugCode abbrev="UwF">
+    <Description>Unwritten field</Description>
+  </BugCode>
+  <BugCode abbrev="IP">
+    <Description>Ignored parameter</Description>
+  </BugCode>
+  <BugCode abbrev="OBL">
+    <Description>Unsatisfied obligation to clean up stream or resource</Description>
+  </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Sat, 23 May 2020 18:36:22 +0200" total_classes="2" referenced_classes="19" total_bugs="6" total_size="28" num_packages="1" java_version="1.8.0_212" vm_version="25.212-b03" cpu_seconds="8.16" clock_seconds="2.30" peak_mbytes="193.76" alloc_mbytes="455.50" gc_seconds="0.06" priority_2="6">
+    <FileStats path="de/kekru/example/codeanalysisbb/Main.java" bugCount="4" size="20" bugHash="8a320e6b71d9c41f2a2912bff2d32ff6"/>
+    <FileStats path="de/kekru/example/codeanalysisbb/SecondClass.java" bugCount="2" size="8" bugHash="5b131d3277a3f623143cd2d731667393"/>
+    <PackageStats package="de.kekru.example.codeanalysisbb" total_bugs="6" total_types="2" total_size="28" priority_2="6">
+      <ClassStats class="de.kekru.example.codeanalysisbb.Main" sourceFile="Main.java" interface="false" size="20" bugs="4" priority_2="4"/>
+      <ClassStats class="de.kekru.example.codeanalysisbb.SecondClass" sourceFile="SecondClass.java" interface="false" size="8" bugs="2" priority_2="2"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="269" invocations="7" avgMicrosecondsPerInvocation="38502" maxMicrosecondsPerInvocation="268386" standardDeviationMicrosecondsPerInvocation="93849"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="262" invocations="383" avgMicrosecondsPerInvocation="685" maxMicrosecondsPerInvocation="24891" standardDeviationMicrosecondsPerInvocation="1822"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="94" invocations="19" avgMicrosecondsPerInvocation="4956" maxMicrosecondsPerInvocation="50560" standardDeviationMicrosecondsPerInvocation="11145"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="90" invocations="19" avgMicrosecondsPerInvocation="4775" maxMicrosecondsPerInvocation="22745" standardDeviationMicrosecondsPerInvocation="6437"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="65" invocations="39" avgMicrosecondsPerInvocation="1667" maxMicrosecondsPerInvocation="34485" standardDeviationMicrosecondsPerInvocation="5743"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="58" invocations="75" avgMicrosecondsPerInvocation="774" maxMicrosecondsPerInvocation="8825" standardDeviationMicrosecondsPerInvocation="1321"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="55" invocations="384" avgMicrosecondsPerInvocation="144" maxMicrosecondsPerInvocation="8540" standardDeviationMicrosecondsPerInvocation="462"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="47" invocations="351" avgMicrosecondsPerInvocation="134" maxMicrosecondsPerInvocation="2966" standardDeviationMicrosecondsPerInvocation="316"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CheckRelaxingNullnessAnnotation" totalMilliseconds="36" invocations="2" avgMicrosecondsPerInvocation="18133" maxMicrosecondsPerInvocation="34368" standardDeviationMicrosecondsPerInvocation="16235"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="35" invocations="19" avgMicrosecondsPerInvocation="1868" maxMicrosecondsPerInvocation="16544" standardDeviationMicrosecondsPerInvocation="3758"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="29" invocations="19" avgMicrosecondsPerInvocation="1568" maxMicrosecondsPerInvocation="19324" standardDeviationMicrosecondsPerInvocation="4246"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="28" invocations="19" avgMicrosecondsPerInvocation="1496" maxMicrosecondsPerInvocation="11446" standardDeviationMicrosecondsPerInvocation="2565"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="25" invocations="7" avgMicrosecondsPerInvocation="3674" maxMicrosecondsPerInvocation="21757" standardDeviationMicrosecondsPerInvocation="7394"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
