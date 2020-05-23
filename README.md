@@ -77,6 +77,40 @@ They need to be prefixed with `codeanalysisbb`
   `codeanalysisbb.bitbucket.token=yourToken`
 
 
+## Minimal Configuration
+
+A minimal configuration will look like this.  
+`code-analysis-bb.yml`  
+
+```yml
+  endPoint: https://bitbucket.example.com/
+  project: some-project
+  repo: some-repo
+
+reporter:
+  pmd:
+    inputXmls:
+      - "build/reports/pmd/main.xml"
+      - "build/reports/pmd/test.xml"
+    key: pmd-analysis
+    title: PMD Code Analysis Report
+    reporter: PMD
+
+  spotbugs:
+    inputXmls:
+      - "build/reports/spotbugs/main.xml"
+      - "build/reports/spotbugs/test.xml"
+    key: spotbugs-key
+    title: Spotbugs Code Analysis Report
+    reporter: Spotbugs
+```
+
+Then set your Bitbucket access token as environment variable:
+
+```bash
+export codeanalysisbb_bitbucket_token=yourToken
+```
+
 ## Integrate in Gradle
 
 This example configures PMD and spotbugs in Gradle and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
