@@ -83,6 +83,7 @@ A minimal configuration will look like this.
 `code-analysis-bb.yml`  
 
 ```yml
+bitbucket:
   endPoint: https://bitbucket.example.com/
   project: some-project
   repo: some-repo
