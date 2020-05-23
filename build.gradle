@@ -96,6 +96,27 @@ jar {
     from sourceSets.main.output
 }
 
+task runnableJar(type: Jar) {
+    group 'build'
+    dependsOn build
+
+    baseName += "-runnable"
+    from sourceSets.generated.output
+    from sourceSets.main.output
+
+    manifest {
+        attributes "Main-Class": "de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter"
+    }
+
+    from {
+        configurations.runtimeClasspath
+            .collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA", "**/lombok/**")
+}
+
+// build.finalizedBy runnableJar
+
 application {
     mainClassName = 'de.kekru.codeanalysisbb.Main'
 }
