@@ -29,6 +29,10 @@ bitbucket:
   project: some-project
   # Your Bitbucket repository inside the Bitbucket project
   repo: some-repo
+  # Optional: Commit id for which the report should be exported
+  # Must be pushed to Bitbucket before
+  # Defaults to the current commitId (by running 'git rev-parse HEAD')
+  commitId: 500bf0068609dc0521b69731396b2ee7d66ce10c
 
 reporter:
   # Optional: Add exporter for the PMD reporter
@@ -71,3 +75,72 @@ They need to be prefixed with `codeanalysisbb`
   `codeanalysisbb_bitbucket_token=yourToken`
 + Java system properties Env vars must be devided by `.`  
   `codeanalysisbb.bitbucket.token=yourToken`
+
+
+## Integrate in Gradle
+
+This example configures PMD and spotbugs in Gradle and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
+
+`build.gradle`  
+
+```groovy
+// Add code-analysis-bitbucket-exporter from jitpack as a buildscript dependency
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        // Buildlog: https://jitpack.io/com/github/kekru/code-analysis-bitbucket-exporter/<versionnumber>/build.log
+        classpath "com.github.kekru:code-analysis-bitbucket-exporter:10a17fc693a182b870cfa53d82788bb857e53e72"
+    }
+}
+
+// add and configure PMD and spotbugs
+
+plugins {
+    id 'pmd'
+    id "com.github.spotbugs" version "4.2.0"
+}
+
+pmd {
+    // Configuration see: https://docs.gradle.org/current/dsl/org.gradle.api.plugins.quality.PmdExtension.html
+    consoleOutput = true
+    toolVersion = "6.21.0"
+    rulePriority = 5
+    ruleSets = ["category/java/errorprone.xml", "category/java/bestpractices.xml"]
+    ignoreFailures = true
+    sourceSets = [sourceSets.main, sourceSets.test]
+}
+
+// https://github.com/spotbugs/spotbugs-gradle-plugin#readme
+spotbugs {
+    toolVersion = '4.0.3'
+    ignoreFailures = true
+}
+
+// add task to export the reports to Bitbucket
+task exportToBitbucket {
+    dependsOn pmdMain, pmdTest, spotbugsMain, spotbugsTest
+    group 'verification'
+    doLast {
+        // set workDir, otherwise it may be anywhere in gradles cache folders
+        System.setProperty("codeanalysisbb.workDir", projectDir.absolutePath)
+        // set inputsXmls for reporters (can also be set in 'code-analysis-bb.yml')
+        System.setProperty("codeanalysisbb.reporter.pmd.inputXmls", "build/reports/pmd/main.xml, build/reports/pmd/test.xml")
+        System.setProperty("codeanalysisbb.reporter.spotbugs.inputXmls", "build/reports/spotbugs/main.xml, build/reports/spotbugs/test.xml");
+        println "Send Code Analysis Report to Bitbucket"
+        de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter.run()
+    }
+}
+```
+
+Be sure to add all other settings in `code-analysis-bb.yml`.  
+Be sure the current commit is the HEAD of a branch on Bitbucket and you have an open Pull Request for that branch.
+
+Run `./gradlew exportToBitbucket`
+
+View the Pull Request. In the overview tab, there should be the report results.  
+
+Tested with Bitbucket Server 6.6.3
