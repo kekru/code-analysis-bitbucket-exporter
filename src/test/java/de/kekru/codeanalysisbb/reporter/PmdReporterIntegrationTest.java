@@ -74,25 +74,25 @@ public class PmdReporterIntegrationTest extends AbstractIntegrationTest {
         .collect(Collectors.toList());
     assertEquals(18, annotations.size());
 
-    Annotation a00 = annotations.get(0);
-    assertNotNull(a00.reportKey());
-    assertNotNull(a00.externalId());
-    assertEquals("https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports", a00.link());
-    assertEquals("Avoid unused imports such as 'com.cdancy.bitbucket.rest.BitbucketClient' (UnusedImports)", a00.message().trim());
-    assertEquals("src/main/java/de/kekru/nociplugin/bitbucket/BitbucketService.java", a00.path());
-    assertEquals(3, a00.line());
-    assertEquals(AnnotationSeverity.LOW, a00.severity());
-    assertEquals(AnnotationType.CODE_SMELL, a00.type());
+    Annotation a = annotations.get(0);
+    assertNotNull(a.reportKey());
+    assertNotNull(a.externalId());
+    assertEquals("https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#unusedimports", a.link());
+    assertEquals("Avoid unused imports such as 'com.cdancy.bitbucket.rest.BitbucketClient' (UnusedImports)", a.message().trim());
+    assertEquals("src/main/java/de/kekru/nociplugin/bitbucket/BitbucketService.java", a.path());
+    assertEquals(3, a.line());
+    assertEquals(AnnotationSeverity.LOW, a.severity());
+    assertEquals(AnnotationType.CODE_SMELL, a.type());
 
-    Annotation a17 = annotations.get(17);
-    assertNotNull(a17.reportKey());
-    assertNotNull(a17.externalId());
-    assertEquals("https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#guardlogstatement", a17.link());
-    assertEquals("Logger calls should be surrounded by log level guards. (GuardLogStatement)", a17.message().trim());
-    assertEquals("src/test/java/de/kekru/nociplugin/testutils/TestShellExecutor.java", a17.path());
-    assertEquals(23, a17.line());
-    assertEquals(AnnotationSeverity.HIGH, a17.severity());
-    assertEquals(AnnotationType.CODE_SMELL, a17.type());
+    a = annotations.get(17);
+    assertNotNull(a.reportKey());
+    assertNotNull(a.externalId());
+    assertEquals("https://pmd.github.io/pmd-6.21.0/pmd_rules_java_bestpractices.html#guardlogstatement", a.link());
+    assertEquals("Logger calls should be surrounded by log level guards. (GuardLogStatement)", a.message().trim());
+    assertEquals("src/test/java/de/kekru/nociplugin/testutils/TestShellExecutor.java", a.path());
+    assertEquals(23, a.line());
+    assertEquals(AnnotationSeverity.HIGH, a.severity());
+    assertEquals(AnnotationType.CODE_SMELL, a.type());
 
   }
 
