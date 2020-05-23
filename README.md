@@ -35,7 +35,7 @@ reporter:
   spotbugs:
     inputXmls:
       - "build/reports/spotbugs/main.xml"
-      - "build/reports/spotbugs/main.xml"
+      - "build/reports/spotbugs/test.xml"
     enabled: true
     key: spotbugs-key
     title: Spotbugs Code Analysis Report
