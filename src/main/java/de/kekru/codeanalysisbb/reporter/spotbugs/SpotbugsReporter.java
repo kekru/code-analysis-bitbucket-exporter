@@ -1,4 +1,4 @@
-package de.kekru.codeanalysisbb.reporter;
+package de.kekru.codeanalysisbb.reporter.spotbugs;
 
 import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.FAIL;
 import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.PASS;

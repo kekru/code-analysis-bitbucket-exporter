@@ -1,4 +1,4 @@
-package de.kekru.codeanalysisbb.reporter;
+package de.kekru.codeanalysisbb.reporter.pmd;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

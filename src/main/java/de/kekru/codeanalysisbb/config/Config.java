@@ -1,8 +1,8 @@
 package de.kekru.codeanalysisbb.config;
 
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
-import de.kekru.codeanalysisbb.reporter.PmdReporter;
-import de.kekru.codeanalysisbb.reporter.SpotbugsReporter;
+import de.kekru.codeanalysisbb.reporter.pmd.PmdReporter;
+import de.kekru.codeanalysisbb.reporter.spotbugs.SpotbugsReporter;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.util.LinkedList;
