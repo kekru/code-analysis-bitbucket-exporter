@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,12 +38,12 @@ public class BitbucketService {
     ReporterConfig reporterConfig = report.getReporterConfig();
 
     CreateInsightReport createInsightReport = CreateInsightReport.create(
-        report.getDetails(),
+        shorten(report.getDetails(), 2000),
         report.getLink(),
         report.getLogoUrl(),
         report.getResult(),
-        reporterConfig.getTitle(),
-        reporterConfig.getReporter(),
+        shorten(reporterConfig.getTitle(), 450),
+        shorten(reporterConfig.getReporter(), 450),
         report.getInsightData()
     );
 
@@ -93,8 +94,16 @@ public class BitbucketService {
         config.getWorkDir()
     ));
 
+    annotation.setMessage(shorten(annotation.getMessage(), 2000));
     annotation.setPath(relativeFileName);
     return annotation;
+  }
+
+  private String shorten(String s, int maxLength) {
+    if (StringUtils.length(s) > maxLength) {
+      return StringUtils.substring(s, 0, maxLength);
+    }
+    return s;
   }
 
   private void handleErrors(List<Error> errors) {
