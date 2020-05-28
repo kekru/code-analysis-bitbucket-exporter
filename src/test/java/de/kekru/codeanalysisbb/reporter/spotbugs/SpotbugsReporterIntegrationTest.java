@@ -57,7 +57,7 @@ public class SpotbugsReporterIntegrationTest extends AbstractIntegrationTest {
     CreateInsightReport report = insightReportCaptor.getValue();
     assertEquals("Spotbugs Code Analysis Report", report.title());
     assertEquals("Spotbugs", report.reporter());
-    assertEquals("Spotbugs Report", report.details());
+    assertEquals("Overall report summary:\n\nFindings by Severity:\nMEDIUM findings: 14\nHIGH findings: 2\n\nThese findings are divided into these types:\nCODE_SMELL findings: 14\nBUG findings: 2\n\nBelow only findings in changed lines are listed\n", report.details());
     assertEquals("https://spotbugs.github.io", report.link());
     assertEquals("https://spotbugs.github.io/images/logos/spotbugs_icon_only_zoom_256px.png", report.logoUrl());
     assertEquals(0, report.data().size());

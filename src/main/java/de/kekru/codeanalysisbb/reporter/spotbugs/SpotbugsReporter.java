@@ -11,6 +11,7 @@ import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.generated.spotbugs.BugCollection;
 import de.kekru.codeanalysisbb.generated.spotbugs.BugCollection.BugInstance.Class;
 import de.kekru.codeanalysisbb.generated.spotbugs.SourceLine;
+import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.io.File;
@@ -27,6 +28,7 @@ import org.apache.commons.lang3.StringUtils;
 public class SpotbugsReporter implements Reporter {
 
   private final Config config;
+  private final ReporterUtilsService reporterUtils;
 
   @Override
   public BitbucketReport getBitbucketReport() {
@@ -45,7 +47,7 @@ public class SpotbugsReporter implements Reporter {
 
     return BitbucketReport.builder()
         .reporterConfig(config.getReporter().getSpotbugs())
-        .details("Spotbugs Report")
+        .details(reporterUtils.getDetailsStringFromAnnotations(annotations))
         .annotations(annotations)
         .result(hasHighSeverityErrors == 0 ? PASS : FAIL)
         .link("https://spotbugs.github.io")

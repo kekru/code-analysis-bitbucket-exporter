@@ -9,6 +9,7 @@ import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.Bitbucket
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
 import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.generated.pmd.Pmd;
+import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.io.File;
@@ -23,6 +24,7 @@ import org.apache.commons.lang3.StringUtils;
 public class PmdReporter implements Reporter {
 
   private final Config config;
+  private final ReporterUtilsService reporterUtils;
 
   @Override
   public BitbucketReport getBitbucketReport(){
@@ -36,7 +38,7 @@ public class PmdReporter implements Reporter {
 
     return BitbucketReport.builder()
         .reporterConfig(config.getReporter().getPmd())
-        .details("PMD Report")
+        .details(reporterUtils.getDetailsStringFromAnnotations(annotations))
         .annotations(annotations)
         .result(hasHighSeverityErrors == 0 ? PASS : FAIL)
         .link("https://pmd.github.io")

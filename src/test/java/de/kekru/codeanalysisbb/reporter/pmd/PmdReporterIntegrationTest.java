@@ -57,7 +57,7 @@ public class PmdReporterIntegrationTest extends AbstractIntegrationTest {
     CreateInsightReport report = insightReportCaptor.getValue();
     assertEquals("PMD Code Analysis Report", report.title());
     assertEquals("PMD", report.reporter());
-    assertEquals("PMD Report", report.details());
+    assertEquals("Overall report summary:\n\nFindings by Severity:\nLOW findings: 10\nMEDIUM findings: 4\nHIGH findings: 4\n\nThese findings are divided into these types:\nCODE_SMELL findings: 14\nBUG findings: 4\n\nBelow only findings in changed lines are listed\n", report.details());
     assertEquals("https://pmd.github.io", report.link());
     assertEquals("https://pmd.github.io/img/pmd_logo.png", report.logoUrl());
     assertEquals(0, report.data().size());
