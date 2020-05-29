@@ -63,27 +63,33 @@ public class BitbucketService {
     handleErrors(insightsReportResponse.errors());
     LOG.debug("InsightsReport Response: " + insightsReportResponse);
 
-    CreateAnnotations createAnnotations = CreateAnnotations.create(
-        report.getAnnotations()
-            .stream()
-            .map(a -> updateAnnotation(a, reporterConfig))
-            .map(BitbucketAnnotation::toAnnotation)
-            .collect(Collectors.toList())
-    );
+    if (report.getAnnotations().isEmpty()) {
+      LOG.debug("No findings present. Not sending annotations for report.");
 
-    LOG.debug("Sending Annotations Request: " + createAnnotations);
+    } else {
 
-    RequestStatus annotationsResponse = insightsApi
-        .createAnnotations(
-            bitbucketConfig.getProject(),
-            bitbucketConfig.getRepo(),
-            bitbucketConfig.getCommitId(),
-            reporterConfig.getKey(),
-            createAnnotations
-        );
+      CreateAnnotations createAnnotations = CreateAnnotations.create(
+          report.getAnnotations()
+              .stream()
+              .map(a -> updateAnnotation(a, reporterConfig))
+              .map(BitbucketAnnotation::toAnnotation)
+              .collect(Collectors.toList())
+      );
 
-    handleErrors(annotationsResponse.errors());
-    LOG.debug("Annotations Response: " + annotationsResponse);
+      LOG.debug("Sending Annotations Request: " + createAnnotations);
+
+      RequestStatus annotationsResponse = insightsApi
+          .createAnnotations(
+              bitbucketConfig.getProject(),
+              bitbucketConfig.getRepo(),
+              bitbucketConfig.getCommitId(),
+              reporterConfig.getKey(),
+              createAnnotations
+          );
+
+      handleErrors(annotationsResponse.errors());
+      LOG.debug("Annotations Response: " + annotationsResponse);
+    }
   }
 
   protected BitbucketAnnotation updateAnnotation(BitbucketAnnotation annotation, ReporterConfig reporterConfig) {
