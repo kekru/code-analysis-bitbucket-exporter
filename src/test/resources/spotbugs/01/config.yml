@@ -4,6 +4,8 @@ bitbucket:
   project: "some-project"
   repo: "some-repo"
 
+breakExecutionOnQualityGate: true
+
 reporter:
   spotbugs:
     inputXmls:

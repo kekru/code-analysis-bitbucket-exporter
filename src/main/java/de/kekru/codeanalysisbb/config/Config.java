@@ -17,6 +17,7 @@ import lombok.Data;
 public class Config {
 
   private String workDir;
+  private boolean breakExecutionOnQualityGate = false;
   private BitbucketConfig bitbucket = new BitbucketConfig();
   private ReporterConfigs reporter = new ReporterConfigs();
 

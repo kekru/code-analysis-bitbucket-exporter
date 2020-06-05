@@ -2,6 +2,7 @@ package de.kekru.codeanalysisbb.reporter.spotbugs;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -14,6 +15,7 @@ import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT;
 import de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter;
 import de.kekru.codeanalysisbb.testutils.AbstractIntegrationTest;
+import de.kekru.codeanalysisbb.utils.CodeAnalysisBitbucketException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +30,12 @@ public class SpotbugsReporterIntegrationTest extends AbstractIntegrationTest {
 
   @Test
   public void testSpotbugsReporting() {
-    new CodeAnalysisBitbucketExporter(serviceRegistry);
+    try {
+      new CodeAnalysisBitbucketExporter(serviceRegistry);
+      fail("Expected CodeAnalysisBitbucketException");
+    } catch (CodeAnalysisBitbucketException e) {
+      assertEquals("There are failed reports: spotbugs-key", e.getMessage());
+    }
 
     ArgumentCaptor<CreateInsightReport> insightReportCaptor = ArgumentCaptor
         .forClass(CreateInsightReport.class);

@@ -12,6 +12,7 @@ import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.config.Config.BitbucketConfig;
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.codeanalysisbb.utils.CodeAnalysisBitbucketException;
 import de.kekru.codeanalysisbb.utils.FileService;
 import java.util.Arrays;
 import java.util.List;
@@ -117,7 +118,7 @@ public class BitbucketService {
       return;
     }
 
-    throw new RuntimeException("Bitbucket request has erros: \n" +
+    throw new CodeAnalysisBitbucketException("Bitbucket request has erros: \n" +
         errors
             .stream()
             .map(String::valueOf)

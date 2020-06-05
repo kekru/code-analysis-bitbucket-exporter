@@ -13,6 +13,7 @@ import de.kekru.codeanalysisbb.qualitygate.QualityGateService;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.codeanalysisbb.utils.CodeAnalysisBitbucketException;
 import java.io.File;
 import java.util.List;
 import java.util.Optional;
@@ -173,7 +174,7 @@ public class SpotbugsReporter implements Reporter {
 
   private BugCollection readSpotbugs(File reportFile) {
     if (!reportFile.exists()) {
-      throw new RuntimeException("File not found: " + reportFile);
+      throw new CodeAnalysisBitbucketException("File not found: " + reportFile);
     }
 
     try {
@@ -181,7 +182,7 @@ public class SpotbugsReporter implements Reporter {
           .createUnmarshaller()
           .unmarshal(reportFile);
     } catch (Exception e) {
-      throw new RuntimeException("Failed to read Spotbugs report: " + reportFile, e);
+      throw new CodeAnalysisBitbucketException("Failed to read Spotbugs report: " + reportFile, e);
     }
   }
 }

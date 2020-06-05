@@ -18,6 +18,8 @@ This is an example configuration
 ```yml
 # Optional: Working directory, defaults to the current dir 
 workDir: /home/me/my-project
+# Optional: Whether to exit with an exception (or error exit code), when the quality gate is broken, default to false
+breakExecutionOnQualityGate: false
 
 bitbucket:
   # URL of your Bitbucket server

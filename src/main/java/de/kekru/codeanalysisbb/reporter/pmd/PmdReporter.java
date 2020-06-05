@@ -11,6 +11,7 @@ import de.kekru.codeanalysisbb.qualitygate.QualityGateService;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.codeanalysisbb.utils.CodeAnalysisBitbucketException;
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -101,7 +102,7 @@ public class PmdReporter implements Reporter {
 
   private Pmd readPmd(File reportFile) {
     if (!reportFile.exists()) {
-      throw new RuntimeException("File not found: " + reportFile);
+      throw new CodeAnalysisBitbucketException("File not found: " + reportFile);
     }
 
     try {
@@ -109,7 +110,7 @@ public class PmdReporter implements Reporter {
           .createUnmarshaller()
           .unmarshal(reportFile);
     } catch (Exception e) {
-      throw new RuntimeException("Failed to read PMD report: " + reportFile, e);
+      throw new CodeAnalysisBitbucketException("Failed to read PMD report: " + reportFile, e);
     }
   }
 }
