@@ -11,6 +11,7 @@ import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import de.kekru.codeanalysisbb.bitbucket.BitbucketThirdPartyService;
 import de.kekru.codeanalysisbb.shell.ShellExecutorService;
+import de.kekru.javautils.dependencyinjection.TestServiceRegistry;
 import de.kekru.javautils.mockitohelper.MockitoHelper;
 import lombok.RequiredArgsConstructor;
 import org.junit.Before;
