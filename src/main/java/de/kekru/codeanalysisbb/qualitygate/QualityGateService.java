@@ -6,7 +6,7 @@ import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketSeverity;
 import de.kekru.codeanalysisbb.config.Config.QualityGateThreshold;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;

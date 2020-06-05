@@ -1,7 +1,8 @@
 package de.kekru.codeanalysisbb.config;
 
-import de.kekru.codeanalysisbb.serviceregistry.ServiceProvider;
 import de.kekru.codeanalysisbb.shell.ShellExecutorService;
+import de.kekru.javautils.config.PropertyLoaderService;
+import de.kekru.javautils.dependencyinjection.ServiceProvider;
 import java.io.File;
 import java.io.FileInputStream;
 import java.nio.file.Paths;

@@ -2,6 +2,7 @@ package de.kekru.codeanalysisbb.config;
 
 import static org.junit.Assert.assertEquals;
 
+import de.kekru.javautils.config.PropertyLoaderService;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

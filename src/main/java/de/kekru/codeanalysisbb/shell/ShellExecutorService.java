@@ -1,6 +1,6 @@
 package de.kekru.codeanalysisbb.shell;
 
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

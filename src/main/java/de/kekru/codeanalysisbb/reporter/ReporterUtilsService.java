@@ -3,7 +3,7 @@ package de.kekru.codeanalysisbb.reporter;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketSeverity;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketType;
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;

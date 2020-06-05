@@ -1,6 +1,6 @@
 package de.kekru.codeanalysisbb.testutils;
 
-import de.kekru.codeanalysisbb.serviceregistry.ServiceRegistry;
+import de.kekru.javautils.dependencyinjection.ServiceRegistry;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;

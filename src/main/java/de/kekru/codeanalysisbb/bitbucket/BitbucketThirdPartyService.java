@@ -4,7 +4,7 @@ import com.cdancy.bitbucket.rest.BitbucketClient;
 import com.cdancy.bitbucket.rest.features.InsightsApi;
 import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.config.Config.BitbucketConfig;
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import lombok.RequiredArgsConstructor;
 
 @Service

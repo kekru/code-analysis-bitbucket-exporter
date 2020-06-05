@@ -5,7 +5,7 @@ import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
 import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
-import de.kekru.codeanalysisbb.serviceregistry.ServiceRegistry;
+import de.kekru.javautils.dependencyinjection.ServiceRegistry;
 import de.kekru.codeanalysisbb.utils.BuildBreakerService;
 import java.util.List;
 import java.util.stream.Collectors;

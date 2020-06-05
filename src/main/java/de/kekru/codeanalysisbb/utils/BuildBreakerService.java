@@ -4,7 +4,7 @@ import com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
 import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;

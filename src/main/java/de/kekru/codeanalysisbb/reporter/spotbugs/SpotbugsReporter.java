@@ -12,7 +12,7 @@ import de.kekru.codeanalysisbb.generated.spotbugs.SourceLine;
 import de.kekru.codeanalysisbb.qualitygate.QualityGateService;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import de.kekru.codeanalysisbb.utils.CodeAnalysisBitbucketException;
 import java.io.File;
 import java.util.List;

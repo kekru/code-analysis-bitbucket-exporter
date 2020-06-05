@@ -11,6 +11,7 @@ import com.cdancy.bitbucket.rest.options.CreateAnnotations;
 import com.cdancy.bitbucket.rest.options.CreateInsightReport;
 import de.kekru.codeanalysisbb.bitbucket.BitbucketThirdPartyService;
 import de.kekru.codeanalysisbb.shell.ShellExecutorService;
+import de.kekru.javautils.mockitohelper.MockitoHelper;
 import lombok.RequiredArgsConstructor;
 import org.junit.Before;
 import org.junit.Rule;
@@ -51,11 +52,11 @@ public class AbstractIntegrationTest {
   private void initBitbucketThirdPartyServiceMock() {
     BitbucketThirdPartyService bitbucketThirdPartyService = mock(BitbucketThirdPartyService.class);
 
-    TestUtils.doAnswer(() -> insightsApiMock)
+    MockitoHelper.doAnswer(() -> insightsApiMock)
         .when(bitbucketThirdPartyService)
         .getInsightsApi();
 
-    TestUtils.doAnswer(() -> insightsReportResponseMock)
+    MockitoHelper.doAnswer(() -> insightsReportResponseMock)
         .when(insightsApiMock)
         .createReport(
             anyString(),
@@ -65,7 +66,7 @@ public class AbstractIntegrationTest {
             any(CreateInsightReport.class)
         );
 
-    TestUtils.doAnswer(() -> annotationsResponseMock)
+    MockitoHelper.doAnswer(() -> annotationsResponseMock)
         .when(insightsApiMock)
         .createAnnotations(
             anyString(),

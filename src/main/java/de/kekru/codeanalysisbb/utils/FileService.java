@@ -1,7 +1,7 @@
 package de.kekru.codeanalysisbb.utils;
 
 import de.kekru.codeanalysisbb.bitbucket.BitbucketService;
-import de.kekru.codeanalysisbb.serviceregistry.Service;
+import de.kekru.javautils.dependencyinjection.Service;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

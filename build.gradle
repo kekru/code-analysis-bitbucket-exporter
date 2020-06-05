@@ -21,6 +21,7 @@ final File spotbugsXsd = Paths.get(projectDir.absolutePath, "src/main/resources/
 
 repositories {
     jcenter()
+    maven { url 'https://jitpack.io' }
 }
 
 java {
@@ -31,6 +32,9 @@ java {
 }
 
 dependencies {
+    // implementation "de.kekru.java-utils:java-utils:0.0.1-SNAPSHOT"
+    implementation "com.github.kekru:java-utils:b23d631f6eeff3c29f4e5d0066019df67ce25987"
+
     implementation "org.slf4j:slf4j-api:1.7.25"
     implementation "org.slf4j:slf4j-simple:1.7.9"
     implementation "org.yaml:snakeyaml:1.26"
