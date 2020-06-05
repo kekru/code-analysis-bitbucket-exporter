@@ -1,16 +1,15 @@
 package de.kekru.codeanalysisbb.reporter.spotbugs;
 
-import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.FAIL;
-import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.PASS;
-
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketSeverity;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketType;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
 import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.config.Config.SpotbugsConfig;
 import de.kekru.codeanalysisbb.generated.spotbugs.BugCollection;
 import de.kekru.codeanalysisbb.generated.spotbugs.BugCollection.BugInstance.Class;
 import de.kekru.codeanalysisbb.generated.spotbugs.SourceLine;
+import de.kekru.codeanalysisbb.qualitygate.QualityGateService;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
@@ -29,27 +28,19 @@ public class SpotbugsReporter implements Reporter {
 
   private final Config config;
   private final ReporterUtilsService reporterUtils;
+  private final QualityGateService qualityGateService;
 
   @Override
   public BitbucketReport getBitbucketReport() {
-    List<BugCollection> bugs = config.getReporter().getSpotbugs().getInputXmls()
-        .stream()
-        .map(File::new)
-        .map(this::readSpotbugs)
-        .collect(Collectors.toList());
+    SpotbugsConfig spotbugsConfig = config.getReporter().getSpotbugs();
 
     final List<BitbucketAnnotation> annotations = getBitbucketAnnotations();
 
-    final long hasHighSeverityErrors = annotations.stream()
-        .map(BitbucketAnnotation::getSeverity)
-        .filter(severity -> BitbucketSeverity.HIGH.equals(severity))
-        .count();
-
     return BitbucketReport.builder()
-        .reporterConfig(config.getReporter().getSpotbugs())
+        .reporterConfig(spotbugsConfig)
         .details(reporterUtils.getDetailsStringFromAnnotations(annotations))
         .annotations(annotations)
-        .result(hasHighSeverityErrors == 0 ? PASS : FAIL)
+        .result(qualityGateService.getQualityGateResult(annotations, spotbugsConfig.getQualityGate()))
         .link("https://spotbugs.github.io")
         .logoUrl("https://spotbugs.github.io/images/logos/spotbugs_icon_only_zoom_256px.png")
         .build();

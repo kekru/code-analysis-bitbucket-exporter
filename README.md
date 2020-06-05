@@ -55,6 +55,12 @@ reporter:
     title: PMD Code Analysis Report
     # Name of the reporter
     reporter: PMD
+    # Optional: QualityGate when to mark report as failed
+    # Defaults to "mark failed when there is at least one high finding" 
+    qualityGate:
+      highCount: 1
+      mediumCount: null
+      lowCount: null
 
   # See 'pmd'
   spotbugs:
@@ -66,6 +72,10 @@ reporter:
     key: spotbugs-key
     title: Spotbugs Code Analysis Report
     reporter: Spotbugs
+    qualityGate:
+      highCount: 1
+      mediumCount: null
+      lowCount: null
 ```
 
 All properties can be overridden using environment variables or Java system properties.    

@@ -1,9 +1,9 @@
 package de.kekru.codeanalysisbb.config;
 
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
+import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.reporter.pmd.PmdReporter;
 import de.kekru.codeanalysisbb.reporter.spotbugs.SpotbugsReporter;
-import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
 import java.util.LinkedList;
 import java.util.List;
@@ -50,6 +50,7 @@ public class Config {
     private String key;
     private String title;
     private String reporter;
+    private QualityGateThreshold qualityGate = new QualityGateThreshold();
 
     @Override
     public Class<? extends Reporter> getReporterService() {
@@ -65,10 +66,18 @@ public class Config {
     private String key;
     private String title;
     private String reporter;
+    private QualityGateThreshold qualityGate = new QualityGateThreshold();
 
     @Override
     public Class<? extends Reporter> getReporterService() {
       return SpotbugsReporter.class;
     }
+  }
+
+  @Data
+  public static class QualityGateThreshold {
+    private Integer lowCount = null;
+    private Integer mediumCount = null;
+    private Integer highCount = 1;
   }
 }

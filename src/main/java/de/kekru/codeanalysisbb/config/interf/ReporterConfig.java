@@ -1,5 +1,6 @@
 package de.kekru.codeanalysisbb.config.interf;
 
+import de.kekru.codeanalysisbb.config.Config.QualityGateThreshold;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 
 public interface ReporterConfig {
@@ -10,4 +11,5 @@ public interface ReporterConfig {
   String getTitle();
   String getReporter();
   Class<? extends Reporter> getReporterService();
+  QualityGateThreshold getQualityGate();
 }

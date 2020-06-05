@@ -1,14 +1,13 @@
 package de.kekru.codeanalysisbb.reporter.pmd;
 
-import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.FAIL;
-import static com.cdancy.bitbucket.rest.options.CreateInsightReport.RESULT.PASS;
-
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketSeverity;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketAnnotation.BitbucketType;
 import de.kekru.codeanalysisbb.bitbucket.datamodel.BitbucketReport;
 import de.kekru.codeanalysisbb.config.Config;
+import de.kekru.codeanalysisbb.config.Config.PmdConfig;
 import de.kekru.codeanalysisbb.generated.pmd.Pmd;
+import de.kekru.codeanalysisbb.qualitygate.QualityGateService;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.serviceregistry.Service;
@@ -25,22 +24,19 @@ public class PmdReporter implements Reporter {
 
   private final Config config;
   private final ReporterUtilsService reporterUtils;
+  private final QualityGateService qualityGateService;
 
   @Override
   public BitbucketReport getBitbucketReport(){
+    PmdConfig pmdConfig = config.getReporter().getPmd();
 
     List<BitbucketAnnotation> annotations = getBitbucketAnnotations();
 
-    final long hasHighSeverityErrors = annotations.stream()
-        .map(BitbucketAnnotation::getSeverity)
-        .filter(severity -> BitbucketSeverity.HIGH.equals(severity))
-        .count();
-
     return BitbucketReport.builder()
-        .reporterConfig(config.getReporter().getPmd())
+        .reporterConfig(pmdConfig)
         .details(reporterUtils.getDetailsStringFromAnnotations(annotations))
         .annotations(annotations)
-        .result(hasHighSeverityErrors == 0 ? PASS : FAIL)
+        .result(qualityGateService.getQualityGateResult(annotations, pmdConfig.getQualityGate()))
         .link("https://pmd.github.io")
         .logoUrl("https://pmd.github.io/img/pmd_logo.png")
         .build();

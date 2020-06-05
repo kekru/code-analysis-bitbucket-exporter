@@ -17,11 +17,8 @@ public class ReporterUtilsService {
       return "Detected no problems";
     }
 
-    Map<BitbucketSeverity, List<BitbucketAnnotation>> mapSeverity = annotations.stream()
-        .collect(Collectors.groupingBy(BitbucketAnnotation::getSeverity, Collectors.toList()));
-
-    Map<BitbucketType, List<BitbucketAnnotation>> mapType = annotations.stream()
-        .collect(Collectors.groupingBy(BitbucketAnnotation::getType, Collectors.toList()));
+    Map<BitbucketSeverity, List<BitbucketAnnotation>> mapSeverity = groupBySeverity(annotations);
+    Map<BitbucketType, List<BitbucketAnnotation>> mapType = groupByType(annotations);
 
     String result = "Overall report summary:\n\nFindings by Severity:\n";
 
@@ -39,5 +36,17 @@ public class ReporterUtilsService {
         .collect(Collectors.joining("\n"));
 
     return result + "\n\nBelow only findings in changed lines are listed\n";
+  }
+
+  public Map<BitbucketType, List<BitbucketAnnotation>> groupByType(
+      List<BitbucketAnnotation> annotations) {
+    return annotations.stream()
+        .collect(Collectors.groupingBy(BitbucketAnnotation::getType, Collectors.toList()));
+  }
+
+  public Map<BitbucketSeverity, List<BitbucketAnnotation>> groupBySeverity(
+      List<BitbucketAnnotation> annotations) {
+    return annotations.stream()
+        .collect(Collectors.groupingBy(BitbucketAnnotation::getSeverity, Collectors.toList()));
   }
 }

@@ -14,3 +14,7 @@ reporter:
     key: pmd-key
     title: PMD Code Analysis Report
     reporter: PMD
+    qualityGate:
+      highCount: 2
+      mediumCount: -1
+      lowCount: null

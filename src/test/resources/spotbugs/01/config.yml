@@ -14,3 +14,5 @@ reporter:
     key: spotbugs-key
     title: Spotbugs Code Analysis Report
     reporter: Spotbugs
+    qualityGate:
+      highCount: 2

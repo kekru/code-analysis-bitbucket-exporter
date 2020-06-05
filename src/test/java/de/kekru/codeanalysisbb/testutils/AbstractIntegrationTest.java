@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TemporaryFolder;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,6 +42,7 @@ public class AbstractIntegrationTest {
 
   @Before
   public void initAbstractIntegrationTest() {
+    MockitoAnnotations.initMocks(this);
     System.setProperty("configFile", configFile);
     initBitbucketThirdPartyServiceMock();
     initTestShellExecutor();
