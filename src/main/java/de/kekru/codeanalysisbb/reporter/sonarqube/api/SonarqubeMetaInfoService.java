@@ -42,7 +42,7 @@ public class SonarqubeMetaInfoService {
   }
 
   private String getAbsoluteReportTaskFilename() {
-    return config.getWorkDir() + "/" + config.getReporter().getSonarqube().getReportTaskFile();
+    return fileService.toAbsoluteFilename(config.getReporter().getSonarqube().getReportTaskFile());
   }
 
   public String getServerUrl() {

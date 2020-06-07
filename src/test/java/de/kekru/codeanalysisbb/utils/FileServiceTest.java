@@ -98,7 +98,7 @@ public class FileServiceTest {
 
   @Test
   public void relativizeAndCleanupPath() {
-    FileService fileservice = new FileService();
+    FileService fileservice = new FileService(null);
 
     LOG.debug(String.format("\nTarget path: %s\nStrip prefixes: %s\nExpect: %s",
         target, prefixes, result));

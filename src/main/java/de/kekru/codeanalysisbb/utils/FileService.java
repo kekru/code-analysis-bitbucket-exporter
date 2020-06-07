@@ -1,24 +1,31 @@
 package de.kekru.codeanalysisbb.utils;
 
 import de.kekru.codeanalysisbb.bitbucket.BitbucketService;
+import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.javautils.dependencyinjection.Service;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Service
+@RequiredArgsConstructor
 public class FileService {
 
   private static final Logger LOG = LoggerFactory.getLogger(BitbucketService.class);
   private static final String PROPERTY_FILE_DELIMITER = "=";
+
+  private final Config config;
 
   public String relativizeAndCleanupPath(final String target, List<String> stripPathPrefixes) {
     String modifiedTarget = replaceBackslashesAndTrim(target);
@@ -70,4 +77,19 @@ public class FileService {
     }
   }
 
+
+  public String toAbsoluteFilename(final String filename) {
+
+    String absolutePath = filename;
+
+    if (!Paths.get(absolutePath).isAbsolute()) {
+      absolutePath = config.getWorkDir() + "/" + filename;
+    }
+
+    if (!Files.exists(Paths.get(absolutePath))) {
+      throw new CodeAnalysisBitbucketException("File not found: " + absolutePath);
+    }
+
+    return absolutePath;
+  }
 }
