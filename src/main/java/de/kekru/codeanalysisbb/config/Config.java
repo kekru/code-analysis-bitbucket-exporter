@@ -34,6 +34,7 @@ public class Config {
   public static class ReporterConfigs {
     private PmdConfig pmd;
     private SpotbugsConfig spotbugs;
+    private SonarConfig sonarqube;
 
     public  List<ReporterConfig> getActiveReporters() {
       return Stream.of(pmd, spotbugs)
@@ -72,6 +73,26 @@ public class Config {
     @Override
     public Class<? extends Reporter> getReporterService() {
       return SpotbugsReporter.class;
+    }
+  }
+
+  @Data
+  public static class SonarConfig implements ReporterConfig {
+    private List<String> inputXmls = new LinkedList<>();
+    private String stripBasePathInputXml;
+    private boolean enabled = true;
+    private String key;
+    private String title;
+    private String reporter;
+    private QualityGateThreshold qualityGate = new QualityGateThreshold();
+    private String login;
+    private String hostUrl;
+    private String branch = "master";
+    private String componentKey;
+
+    @Override
+    public Class<? extends Reporter> getReporterService() {
+      return null;
     }
   }
 

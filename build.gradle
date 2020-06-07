@@ -37,6 +37,7 @@ dependencies {
 
     implementation "org.slf4j:slf4j-api:1.7.25"
     implementation "org.slf4j:slf4j-simple:1.7.9"
+    implementation 'org.apache.jclouds.driver:jclouds-slf4j:2.2.0'
     implementation "org.yaml:snakeyaml:1.26"
     implementation "com.cdancy:bitbucket-rest:2.6.2"
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
