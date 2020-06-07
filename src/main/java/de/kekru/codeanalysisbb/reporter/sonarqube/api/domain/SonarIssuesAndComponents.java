@@ -1,7 +1,7 @@
-package de.kekru.codeanalysisbb.reporter.sonarqube.api;
+package de.kekru.codeanalysisbb.reporter.sonarqube.api.domain;
 
-import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.SonarComponent;
-import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.SonarIssue;
+import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarComponent;
+import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarIssue;
 import java.util.List;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

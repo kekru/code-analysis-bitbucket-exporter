@@ -1,4 +1,4 @@
-package de.kekru.codeanalysisbb.reporter.sonarqube.api.domain;
+package de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues;
 
 import java.util.List;
 import lombok.Data;

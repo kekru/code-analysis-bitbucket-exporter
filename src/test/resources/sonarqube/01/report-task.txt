@@ -1,0 +1,6 @@
+projectKey=example-code-analysis-bitbucket-exporter
+serverUrl=https://sonarqube.localhost
+serverVersion=7.9.2.30863
+dashboardUrl=https://sonarqube.localhost/dashboard?id=example-code-analysis-bitbucket-exporter
+ceTaskId=abcdefghijklmnopqrstuvwxyz
+ceTaskUrl=https://sonarqube.localhost/api/ce/task?id=abcdefghijklmnopqrstuvwxyz

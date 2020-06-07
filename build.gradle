@@ -33,7 +33,7 @@ java {
 
 dependencies {
     // implementation "de.kekru.java-utils:java-utils:0.0.1-SNAPSHOT"
-    implementation "com.github.kekru:java-utils:705cb080bea2153c64d7c41408bcd9ce7ebfbaf5"
+    implementation "com.github.kekru:java-utils:7ae005071c2abbf58c2294118746ee70392621d3"
 
     implementation "org.slf4j:slf4j-api:1.7.25"
     implementation "org.slf4j:slf4j-simple:1.7.9"

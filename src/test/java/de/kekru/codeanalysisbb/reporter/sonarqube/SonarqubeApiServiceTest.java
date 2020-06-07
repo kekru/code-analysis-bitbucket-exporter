@@ -1,21 +1,20 @@
 package de.kekru.codeanalysisbb.reporter.sonarqube;
 
-import static org.junit.Assert.*;
-
 import de.kekru.codeanalysisbb.testutils.AbstractIntegrationTest;
 import org.junit.Ignore;
 import org.junit.Test;
 
 @Ignore
-public class SonarqubeDownloaderServiceTest extends AbstractIntegrationTest {
+public class SonarqubeApiServiceTest extends AbstractIntegrationTest {
 
-  public SonarqubeDownloaderServiceTest() {
+  public SonarqubeApiServiceTest() {
     super("src/test/resources/sonarqube/01/config.yml");
   }
 
   @Test
   public void test () {
-    SonarqubeDownloaderService downloader = serviceRegistry.get(SonarqubeDownloaderService.class);
+    SonarqubeApiService downloader = serviceRegistry.get(SonarqubeApiService.class);
     downloader.readSonarIssues();
+    downloader.readProjectStatus();
   }
 }

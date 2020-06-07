@@ -11,5 +11,4 @@ public interface ReporterConfig {
   String getTitle();
   String getReporter();
   Class<? extends Reporter> getReporterService();
-  QualityGateThreshold getQualityGate();
 }

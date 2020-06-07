@@ -11,7 +11,8 @@ reporter:
     key: sonar-key
     title: Sonarqube Report
     reporter: Sonarqube
-    hostUrl: https://sonarqube.localhost
+    serverUrl: https://sonarqube.localhost
     login: 123456789
-    componentKey: "example-code-analysis-bitbucket-exporter"
+    projectKey: "example-code-analysis-bitbucket-exporter"
     branch: master
+    reportTaskFile: "src/test/resources/sonarqube/01/report-task.txt"

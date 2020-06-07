@@ -1,8 +1,10 @@
 package de.kekru.codeanalysisbb.config;
 
+import de.kekru.codeanalysisbb.config.interf.LocalXmlReporterConfig;
 import de.kekru.codeanalysisbb.config.interf.ReporterConfig;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
 import de.kekru.codeanalysisbb.reporter.pmd.PmdReporter;
+import de.kekru.codeanalysisbb.reporter.sonarqube.SonarqubeReporter;
 import de.kekru.codeanalysisbb.reporter.spotbugs.SpotbugsReporter;
 import de.kekru.javautils.dependencyinjection.Service;
 import java.util.LinkedList;
@@ -45,7 +47,7 @@ public class Config {
   }
 
   @Data
-  public static class PmdConfig implements ReporterConfig {
+  public static class PmdConfig implements LocalXmlReporterConfig {
     private List<String> inputXmls = new LinkedList<>();
     private String stripBasePathInputXml;
     private boolean enabled = true;
@@ -61,7 +63,7 @@ public class Config {
   }
 
   @Data
-  public static class SpotbugsConfig implements ReporterConfig {
+  public static class SpotbugsConfig implements LocalXmlReporterConfig {
     private List<String> inputXmls = new LinkedList<>();
     private String stripBasePathInputXml;
     private boolean enabled = true;
@@ -78,21 +80,20 @@ public class Config {
 
   @Data
   public static class SonarConfig implements ReporterConfig {
-    private List<String> inputXmls = new LinkedList<>();
-    private String stripBasePathInputXml;
     private boolean enabled = true;
+    private String stripBasePathInputXml;
     private String key;
     private String title;
     private String reporter;
-    private QualityGateThreshold qualityGate = new QualityGateThreshold();
     private String login;
-    private String hostUrl;
+    private String serverUrl;
+    private String projectKey;
+    private String reportTaskFile;
     private String branch = "master";
-    private String componentKey;
 
     @Override
     public Class<? extends Reporter> getReporterService() {
-      return null;
+      return SonarqubeReporter.class;
     }
   }
 

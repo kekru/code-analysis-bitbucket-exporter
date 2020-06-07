@@ -29,6 +29,8 @@ public class ConfigProvider implements ServiceProvider<Config> {
       overrideWithEnvVars(config);
       overrideWithSystemProperties(config);
 
+      config.setWorkDir(removeLastSlash(config.getWorkDir()));
+
       if (StringUtils.isBlank(config.getWorkDir())) {
         config.setWorkDir(Paths.get(".").toAbsolutePath().normalize().toString());
       }
@@ -36,6 +38,24 @@ public class ConfigProvider implements ServiceProvider<Config> {
     }
 
     return config;
+  }
+
+  private String removeLastSlash(final String path) {
+    final String pathTrimmed = StringUtils.trimToEmpty(path);
+
+    if (StringUtils.isBlank(path)) {
+      return pathTrimmed;
+    }
+
+    if (StringUtils.endsWith(path, "/")) {
+      return StringUtils.removeEnd(path, "/");
+    }
+
+    if (StringUtils.endsWith(path, "\\")) {
+      return StringUtils.removeEnd(path, "\\");
+    }
+
+    return path;
   }
 
   private String getCommitId() {
