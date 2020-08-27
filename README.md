@@ -1,8 +1,13 @@
 # Code Analysis Bitbucket Exporter
 
-Send analysis reports of PMD, checkstyle and others to Bitbucket Insights - via API, no plugin installation required
+Send analysis reports of PMD, checkstyle, Sonarqube and others to Bitbucket Insights - via API, no plugin installation required
 
 Based on [cdancy/bitbucket-rest](https://github.com/cdancy/bitbucket-rest)
+
+The workflow is always:
+
++ Create the reports with your standard tools 
++ Use this exporter to send the reports to Bitbucket Insights
 
 ## Run App
 
@@ -78,6 +83,28 @@ reporter:
       highCount: 1
       mediumCount: null
       lowCount: null
+
+  sonarqube:
+    enabled: true
+    stripBasePathInputXml: /home/me/my-project
+    key: sonar-key
+    title: Sonarqube Report
+    reporter: Sonarqube
+    # Optional: URL of your Sonarqube server
+    # Defaults to the value of "serverUrl" in report-task.txt
+    serverUrl: https://sonarqube.example.com
+    # Login Access Token for Sonarqube
+    login: <Login Token in Sonarqube>
+    # Optional: Key of the analysed project in Sonarqube
+    # Defaults to the value of "projectKey" in report-task.txt
+    projectKey: "my-project-name-in-sonarqube"
+    # Optional: Branch of the analysed project in Sonarqube
+    # Defaults to "master"
+    branch: master
+    # report-task.txt file that was created when sonarqube analysis finished
+    # "ceTaskId" from inside the file is required
+    # Path is relative to workDir (see above) 
+    reportTaskFile: "build/sonar/report-task.txt"
 ```
 
 All properties can be overridden using environment variables or Java system properties.    
