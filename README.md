@@ -6,8 +6,11 @@ Based on [cdancy/bitbucket-rest](https://github.com/cdancy/bitbucket-rest)
 
 The workflow is always:
 
-+ Create the reports with your standard tools 
-+ Use this exporter to send the reports to Bitbucket Insights
++ Create the reports with your standard tools
++ Use this exporter to send the reports to Bitbucket Insights.  
+  You always need an open Pull-Request in Bitbucket, otherwise results will not be shown
+
+Tested with Bitbucket Server 6.6.3
 
 ## Run App
 
@@ -167,7 +170,7 @@ buildscript {
     }
     dependencies {
         // Buildlog: https://jitpack.io/com/github/kekru/code-analysis-bitbucket-exporter/<versionnumber>/build.log
-        classpath "com.github.kekru:code-analysis-bitbucket-exporter:10a17fc693a182b870cfa53d82788bb857e53e72"
+        classpath "com.github.kekru:code-analysis-bitbucket-exporter:0.1.0"
     }
 }
 
@@ -217,4 +220,137 @@ Run `./gradlew exportToBitbucket`
 
 View the Pull Request. In the overview tab, there should be the report results.  
 
-Tested with Bitbucket Server 6.6.3
+## Integrate in Maven
+
+This example configures PMD and spotbugs in Gradle and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
+
+pom.xml
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>...</groupId>
+  <artifactId>...</artifactId>
+  <packaging>...</packaging>
+  <version>...</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <id>exportToBitbucket</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <includeProjectDependencies>false</includeProjectDependencies>
+              <includePluginDependencies>true</includePluginDependencies>
+              <mainClass>de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter</mainClass>
+              <systemProperties>
+                <systemProperty>
+                  <key>codeanalysisbb.workDir</key>
+                  <value>${project.basedir}</value>
+                </systemProperty>
+                <!-- set inputsXmls for reporters (can also be set in 'code-analysis-bb.yml') -->
+                <systemProperty>
+                  <key>codeanalysisbb.reporter.pmd.inputXmls</key>
+                  <value>target/pmd.xml</value>
+                </systemProperty>
+                <systemProperty>
+                  <key>codeanalysisbb.reporter.spotbugs.inputXmls</key>
+                  <value>target/spotbugs-detailed.xml</value>
+                </systemProperty>
+              </systemProperties>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.github.kekru</groupId>
+            <artifactId>code-analysis-bitbucket-exporter</artifactId>
+            <version>0.1.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.1-jre</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.9.0</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <includeTests>true</includeTests>
+          <rulesets>category/java/errorprone.xml,category/java/bestpractices.xml</rulesets>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.0.0</version>
+        <configuration>
+          <includeTests>true</includeTests>
+          <effort>Max</effort>
+          <spotbugsXmlOutput>true</spotbugsXmlOutput>
+          <spotbugsXmlOutputFilename>spotbugs-detailed.xml</spotbugsXmlOutputFilename>
+          <failOnError>false</failOnError>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.9</version>
+    </dependency>
+  </dependencies>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </pluginRepository>
+  </pluginRepositories>
+</project>
+```
+
+Be sure to add all other settings in `code-analysis-bb.yml`.  
+Be sure the current commit is the HEAD of a branch on Bitbucket and you have an open Pull Request for that branch.
+
+Run `mvn package site exec:java@exportToBitbucket`.  
+`site` creates the reports and `exec:java@exportToBitbucket` sends them to Bitbucket.
+
+View the Pull Request. In the overview tab, there should be the report results.
