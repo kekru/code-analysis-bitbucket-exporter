@@ -51,7 +51,7 @@ public class SonarqubeMetaInfoService {
       return serverUrl;
     }
 
-    serverUrl = getMetaInfo().getProjectKey();
+    serverUrl = getMetaInfo().getServerUrl();
 
     if (StringUtils.isBlank(serverUrl)) {
       throw new CodeAnalysisBitbucketException(

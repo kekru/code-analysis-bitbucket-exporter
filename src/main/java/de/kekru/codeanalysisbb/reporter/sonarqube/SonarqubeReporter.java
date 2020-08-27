@@ -9,6 +9,7 @@ import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.config.Config.SonarConfig;
 import de.kekru.codeanalysisbb.reporter.ReporterUtilsService;
 import de.kekru.codeanalysisbb.reporter.interf.Reporter;
+import de.kekru.codeanalysisbb.reporter.sonarqube.api.SonarqubeMetaInfoService;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.SonarIssuesAndComponents;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarComponent;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarIssue;
@@ -30,6 +31,7 @@ public class SonarqubeReporter implements Reporter {
   private final Config config;
   private final ReporterUtilsService reporterUtils;
   private final SonarqubeApiService sonarqubeApiService;
+  private final SonarqubeMetaInfoService metaInfoService;
 
   @Override
   public BitbucketReport getBitbucketReport() {
@@ -47,7 +49,7 @@ public class SonarqubeReporter implements Reporter {
         .details(reporterUtils.getDetailsStringFromAnnotations(annotations))
         .annotations(annotations)
         .result(getQualityGateResult(projectStatus))
-        .link(sonarqubeConfig.getServerUrl())
+        .link(metaInfoService.getServerUrl())
         .logoUrl("https://docs.sonarqube.org/latest/images/SonarQubeIcon.svg")
         .build();
   }
@@ -115,7 +117,7 @@ public class SonarqubeReporter implements Reporter {
     SonarConfig sonarqubeConfig = config.getReporter().getSonarqube();
 
     return String.format("%s/project/issues?id=%s&open=%s",
-        StringUtils.trimToEmpty(StringUtils.removeEnd(sonarqubeConfig.getServerUrl(), "/")),
+        StringUtils.trimToEmpty(StringUtils.removeEnd(metaInfoService.getServerUrl(), "/")),
         StringUtils.trimToEmpty(sonarqubeConfig.getProjectKey()),
         StringUtils.trimToEmpty(issue.getKey())
     );
