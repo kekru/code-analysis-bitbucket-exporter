@@ -79,7 +79,7 @@ public class SonarqubeMetaInfoService {
     return projectKey;
   }
 
-  public String getAnalysisId() {
+  public String getCeTaskId() {
     String taskId = getMetaInfo().getCeTaskId();
     if (StringUtils.isBlank(taskId)) {
       throw new CodeAnalysisBitbucketException(

@@ -6,6 +6,9 @@ import org.jclouds.rest.annotations.Delegate;
 public interface SonarqubeApi extends Closeable {
 
     @Delegate
+    CeApi ceApi();
+
+    @Delegate
     QualityGatesApi qualityGatesApi();
 
     @Delegate

@@ -4,9 +4,10 @@ import com.google.common.collect.ImmutableSet;
 import com.google.inject.Module;
 import de.kekru.codeanalysisbb.config.Config;
 import de.kekru.codeanalysisbb.config.Config.SonarConfig;
+import de.kekru.codeanalysisbb.reporter.sonarqube.api.SonarqubeApi;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.SonarqubeMetaInfoService;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.SonarIssuesAndComponents;
-import de.kekru.codeanalysisbb.reporter.sonarqube.api.SonarqubeApi;
+import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.ce.CeTask;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarComponent;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarIssue;
 import de.kekru.codeanalysisbb.reporter.sonarqube.api.domain.httpapi.issues.SonarSearch;
@@ -32,8 +33,9 @@ public class SonarqubeApiService {
   private SonarqubeApi sonarqubeApi;
 
   public SonarProjectStatus readProjectStatus () {
-    String analysisId = sonarqubeMetaInfoService.getAnalysisId();
-    SonarProjectStatus status = getSonarqubeApi().qualityGatesApi().getProjectStatus(analysisId)
+    String ceTaskId = sonarqubeMetaInfoService.getCeTaskId();
+    CeTask ceTask = getSonarqubeApi().ceApi().getTask(ceTaskId).getTask();
+    SonarProjectStatus status = getSonarqubeApi().qualityGatesApi().getProjectStatus(ceTask.getAnalysisId())
         .getProjectStatus();
     LOG.debug("Retrieved sonar project status: " + status);
     return status;
