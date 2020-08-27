@@ -164,7 +164,6 @@ This example configures PMD and spotbugs in Gradle and adds the `code-analysis-b
 // Add code-analysis-bitbucket-exporter from jitpack as a buildscript dependency
 buildscript {
     repositories {
-        mavenLocal()
         jcenter()
         maven { url 'https://jitpack.io' }
     }
@@ -354,3 +353,65 @@ Run `mvn package site exec:java@exportToBitbucket`.
 `site` creates the reports and `exec:java@exportToBitbucket` sends them to Bitbucket.
 
 View the Pull Request. In the overview tab, there should be the report results.
+
+
+## Integrate in Gradle with Sonarqube
+
+
+This example configures Sonarqube in Gradle and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
+
+`build.gradle`  
+
+```groovy
+// Add code-analysis-bitbucket-exporter from jitpack as a buildscript dependency
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath "com.github.kekru:code-analysis-bitbucket-exporter:0.1.0"
+    }
+}
+
+plugins {
+    id "org.sonarqube" version "2.6.2"
+}
+
+sonarqube {
+    properties {
+        property 'sonar.jacoco.reportPaths', 'build/jacoco/test.exec'
+        property 'sonar.junit.reportPaths', 'build/test-results/test'
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.host.url", "https://sonarqube.example.com"
+        property "sonar.login", "123456789"
+        property "sonar.verbose", "true"
+        property "sonar.issuesReport.html.enable", "true"
+        property "sonar.projectKey", "my-project-name-in-sonarqube"
+    }
+}
+
+// add task to export the reports to Bitbucket
+task exportToBitbucket {
+    group 'verification'
+    doLast {
+        // set workDir, otherwise it may be anywhere in gradles cache folders
+        System.setProperty("codeanalysisbb.workDir", projectDir.absolutePath)
+        // set reportTaskFile location (can also be set in 'code-analysis-bb.yml')
+        System.setProperty("codeanalysisbb.reporter.sonarqube.reportTaskFile", "build/sonar/report-task.txt")
+        println "Send Code Analysis Report to Bitbucket"
+        de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter.run()
+    }
+}
+```
+
+Be sure to add all other settings in `code-analysis-bb.yml`.  
+Be sure the current commit is the HEAD of a branch on Bitbucket and you have an open Pull Request for that branch.
+
+Run `./gradlew sonarqube` to run sonarqube analysis.  
+When analysis is done, a file `build/sonar/report-task.txt` is created.  
+Now you can run `./gradlew exportToBitbucket`.  
+
+View the Pull Request. In the overview tab, there should be the report results.
+
+Tested with Sonarqube 7.9.4
