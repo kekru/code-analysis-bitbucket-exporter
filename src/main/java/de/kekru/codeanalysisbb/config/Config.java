@@ -39,7 +39,7 @@ public class Config {
     private SonarConfig sonarqube;
 
     public  List<ReporterConfig> getActiveReporters() {
-      return Stream.of(pmd, spotbugs)
+      return Stream.of(pmd, spotbugs, sonarqube)
           .filter(Objects::nonNull)
           .filter(ReporterConfig::isEnabled)
           .collect(Collectors.toList());
