@@ -76,7 +76,7 @@ public class SonarqubeReporterIntegrationTest extends AbstractIntegrationTest {
     assertEquals("Sonarqube Report", report.title());
     assertEquals("Sonarqube", report.reporter());
     assertEquals("Overall report summary:\n\nFindings by Severity:\nLOW findings: 4\nMEDIUM findings: 4\nHIGH findings: 3\n\nThese findings are divided into these types:\nVULNERABILITY findings: 1\nCODE_SMELL findings: 7\nBUG findings: 3\n\nBelow only findings in changed lines are listed\n", report.details());
-    assertEquals("https://sonarqube.localhost", report.link());
+    assertEquals("https://sonarqube.localhost/dashboard?id=example-code-analysis-bitbucket-exporter", report.link());
     assertEquals("https://docs.sonarqube.org/latest/images/SonarQubeIcon.svg", report.logoUrl());
     assertEquals(0, report.data().size());
     assertEquals(RESULT.PASS, report.result());

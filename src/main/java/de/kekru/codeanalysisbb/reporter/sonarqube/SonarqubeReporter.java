@@ -49,7 +49,7 @@ public class SonarqubeReporter implements Reporter {
         .details(reporterUtils.getDetailsStringFromAnnotations(annotations))
         .annotations(annotations)
         .result(getQualityGateResult(projectStatus))
-        .link(metaInfoService.getServerUrl())
+        .link(metaInfoService.getServerUrl() + "/dashboard?id=" + metaInfoService.getProjectKey())
         .logoUrl("https://docs.sonarqube.org/latest/images/SonarQubeIcon.svg")
         .build();
   }

@@ -48,7 +48,7 @@ public class SonarqubeMetaInfoService {
   public String getServerUrl() {
     String serverUrl = config.getReporter().getSonarqube().getServerUrl();
     if (!StringUtils.isBlank(serverUrl)) {
-      return serverUrl;
+      return StringUtils.removeEnd(serverUrl, "/");
     }
 
     serverUrl = getMetaInfo().getServerUrl();
@@ -59,7 +59,7 @@ public class SonarqubeMetaInfoService {
               + getAbsoluteReportTaskFilename());
     }
 
-    return serverUrl;
+    return StringUtils.removeEnd(serverUrl, "/");
   }
 
   public String getProjectKey() {
