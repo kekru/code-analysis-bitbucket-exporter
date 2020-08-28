@@ -251,7 +251,7 @@ View the Pull Request. In the overview tab, there should be the report results.
 
 ## Integrate in Maven
 
-This example configures PMD and spotbugs in Gradle and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
+This example configures PMD and spotbugs in Maven and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
 
 pom.xml
 

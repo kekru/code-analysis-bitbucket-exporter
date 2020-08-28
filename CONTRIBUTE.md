@@ -41,7 +41,7 @@ To add a new reporter service, you should do the following
 + add a new Config for your Reporter in [Config.java](./src/main/java/de/kekru/codeanalysisbb/config/Config.java)  
   and don't forget to add it to the `getActiveReporters()` method in Config.java
 + add a test under [src/test/java/de/kekru/codeanalysisbb/reporter](./src/test/java/de/kekru/codeanalysisbb/reporter)  
-  See PmdReporterIntegrationTest.java.java as a template
+  See PmdReporterIntegrationTest.java as a template
 + add the new Config to the description in [README.md](./README.md)
 
 Now create a `code-analysis-bb.yml` with your config options in the root of the project and run
@@ -61,5 +61,5 @@ So if you need another service, just add it as an argument to your service's con
 
 ## Http Client
 
-When calling other servers via http Apacha jclouds is used, because it already comes with com.cdancy:bitbucket-rest library (which is used for Bitbucket communication)  
+When calling other servers via http, then Apacha jclouds is used, because it already comes with com.cdancy:bitbucket-rest library (which is used for Bitbucket communication)  
 An example for jclouds can be found under [src/main/java/de/kekru/codeanalysisbb/reporter/sonarqube](./src/main/java/de/kekru/codeanalysisbb/reporter/sonarqube)
