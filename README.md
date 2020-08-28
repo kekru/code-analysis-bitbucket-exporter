@@ -1,8 +1,9 @@
 # Code Analysis Bitbucket Exporter
 
-Send analysis reports of PMD, checkstyle, Sonarqube and others to Bitbucket Insights - via API, no plugin installation required
+Send analysis reports of PMD, Spotbugs, Sonarqube and others to Bitbucket Code Insights - via API, no plugin installation required
 
-Based on [cdancy/bitbucket-rest](https://github.com/cdancy/bitbucket-rest)
+Based on [cdancy/bitbucket-rest](https://github.com/cdancy/bitbucket-rest)  
+View [Bitbucket Code Insights](https://confluence.atlassian.com/bitbucketserver/code-insights-966660485.html) to find out more about the Bitbucket feature. 
 
 The workflow is always:
 
@@ -12,11 +13,15 @@ The workflow is always:
 
 Tested with Bitbucket Server 6.6.3
 
-## Run App
+Currently supported analysis reports:
 
-```bash
-.\gradlew build run
-```
++ [PMD](https://pmd.github.io/)
++ [Spotbugs](https://spotbugs.github.io/)
++ [Sonarqube](https://www.sonarqube.org/)
+
+## Develop
+
+If you want to develop or contribute to this project, see [CONTRIBUTE.md](./CONTRIBUTE.md)
 
 ## Configuration
 
@@ -125,6 +130,8 @@ They need to be prefixed with `codeanalysisbb`
 + Java system properties Env vars must be devided by `.`  
   `codeanalysisbb.bitbucket.token=yourToken`
 
+If you have another location for your config file set the location in an env var or Java system property with name `codeAnalysisBBConfigFile`.  
+e.g. `export codeAnalysisBBConfigFile="some/other/dir/code-analysis-bb.yml"`
 
 ## Minimal Configuration
 
@@ -159,6 +166,22 @@ Then set your Bitbucket access token as environment variable:
 
 ```bash
 export codeanalysisbb_bitbucket_token=yourToken
+```
+
+## Artifacts served via JitPack
+
+The artifacts are served via JitPak. Be sure to add it as remote repository for Gradle and Maven
+
+```groovy
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath "com.github.kekru:code-analysis-bitbucket-exporter:0.1.0"
+    }
+}
 ```
 
 ## Integrate in Gradle
