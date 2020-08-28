@@ -162,10 +162,11 @@ reporter:
     reporter: Spotbugs
 ```
 
-Then set your Bitbucket access token as environment variable:
+Then set your Bitbucket access token as environment variable and e.g. run with gradle (see below)
 
 ```bash
 export codeanalysisbb_bitbucket_token=yourToken
+./gradlew exportToBitbucket
 ```
 
 ## Artifacts served via JitPack
@@ -253,7 +254,7 @@ View the Pull Request. In the overview tab, there should be the report results.
 
 This example configures PMD and spotbugs in Maven and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
 
-pom.xml
+`pom.xml`
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -355,12 +356,6 @@ pom.xml
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
       <version>1.7.9</version>
@@ -386,7 +381,6 @@ View the Pull Request. In the overview tab, there should be the report results.
 
 
 ## Integrate in Gradle with Sonarqube
-
 
 This example configures Sonarqube in Gradle and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
 
@@ -414,7 +408,6 @@ sonarqube {
         property 'sonar.junit.reportPaths', 'build/test-results/test'
         property "sonar.sourceEncoding", "UTF-8"
         property "sonar.host.url", "https://sonarqube.example.com"
-        property "sonar.login", "123456789"
         property "sonar.verbose", "true"
         property "sonar.issuesReport.html.enable", "true"
         property "sonar.projectKey", "my-project-name-in-sonarqube"
@@ -438,9 +431,109 @@ task exportToBitbucket {
 Be sure to add all other settings in `code-analysis-bb.yml`.  
 Be sure the current commit is the HEAD of a branch on Bitbucket and you have an open Pull Request for that branch.
 
-Run `./gradlew sonarqube` to run sonarqube analysis.  
+Run `./gradlew sonarqube -Dsonar.login=<Sonar Login Token>` to run sonarqube analysis.  
 When analysis is done, a file `build/sonar/report-task.txt` is created.  
-Now you can run `./gradlew exportToBitbucket`.  
+Now you can run `./gradlew exportToBitbucket -Dcodeanalysisbb.reporter.sonarqube.login=<Sonar Login Token>`.  
+
+View the Pull Request. In the overview tab, there should be the report results.
+
+Tested with Sonarqube 7.9.4
+
+
+## Integrate in Maven with Sonarqube
+
+This example configures Sonarqube in Maven and adds the `code-analysis-bitbucket-exporter` to export the results to Bitbucket insights.
+
+`pom.xml`  
+
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>...</groupId>
+  <artifactId>...</artifactId>
+  <packaging>...</packaging>
+  <version>...</version>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <sonar.host.url>https://sonarqube.example.com</sonar.host.url>
+    <sonar.projectKey>my-project-name-in-sonarqube</sonar.projectKey>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <id>exportToBitbucket</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <includeProjectDependencies>false</includeProjectDependencies>
+              <includePluginDependencies>true</includePluginDependencies>
+              <mainClass>de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter</mainClass>
+              <systemProperties>
+                <systemProperty>
+                  <key>codeanalysisbb.workDir</key>
+                  <value>${project.basedir}</value>
+                </systemProperty>
+                <!-- set reportTaskFile location (can also be set in 'code-analysis-bb.yml') -->
+                <systemProperty>
+                  <key>codeanalysisbb.reporter.sonarqube.reportTaskFile</key>
+                  <value>target/sonar/report-task.txt</value>
+                </systemProperty>              
+              </systemProperties>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>com.github.kekru</groupId>
+            <artifactId>code-analysis-bitbucket-exporter</artifactId>
+            <version>0.1.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>25.1-jre</version>
+          </dependency>
+        </dependencies>
+      </plugin>      
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>1.7.9</version>
+    </dependency>
+  </dependencies>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </pluginRepository>
+  </pluginRepositories>
+</project>
+```
+
+Be sure to add all other settings in `code-analysis-bb.yml`.  
+Be sure the current commit is the HEAD of a branch on Bitbucket and you have an open Pull Request for that branch.
+
+Run `mvn package sonar:sonar -Dsonar.login=<Sonar Login Token>` to run sonarqube analysis.  
+When analysis is done, a file `target/sonar/report-task.txt` is created.  
+Now you can run `mvn exec:java@exportToBitbucket -Dcodeanalysisbb.reporter.sonarqube.login=<Sonar Login Token>`.  
 
 View the Pull Request. In the overview tab, there should be the report results.
 
