@@ -10,17 +10,21 @@ import java.util.Arrays;
 import java.util.HashMap;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
 @RequiredArgsConstructor
 public class ConfigProvider implements ServiceProvider<Config> {
 
+  private static final Logger LOG = LoggerFactory.getLogger(ConfigProvider.class);
   private Config config;
   private final ShellExecutorService shellExecutorService;
   private final PropertyLoaderService propertyLoaderService;
 
   private static final String PROPERTY_PREFIX = "codeanalysisbb";
+  private static final String CONFIG_FILE_PROPERTY = "codeAnalysisBBConfigFile";
 
   @Override
   public Config getService() {
@@ -89,12 +93,23 @@ public class ConfigProvider implements ServiceProvider<Config> {
 
   private Config readFromYaml() {
 
-    String configFile = System.getProperty("configFile");
-    if (configFile == null) {
+    String configFile = System.getProperty(CONFIG_FILE_PROPERTY);
+    if (StringUtils.isBlank(configFile)) {
+      configFile = System.getenv(CONFIG_FILE_PROPERTY);
+    }
+    if (StringUtils.isBlank(configFile)) {
       configFile = "code-analysis-bb.yml";
     }
 
     File yamlConfigFile = new File(configFile).getAbsoluteFile();
+    LOG.debug("Using config file: " + yamlConfigFile);
+
+    if (!yamlConfigFile.exists()) {
+      throw new RuntimeException("Config file not found under: " + yamlConfigFile +
+          ", define another location by setting Java property (-D) or env var: " + CONFIG_FILE_PROPERTY
+          +
+          "=some/other/dir/code-analysis-bb.yml");
+    }
 
     try {
       Yaml yaml = new Yaml(new Constructor(Config.class));

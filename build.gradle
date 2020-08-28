@@ -125,7 +125,7 @@ task runnableJar(type: Jar) {
 // build.finalizedBy runnableJar
 
 application {
-    mainClassName = 'de.kekru.codeanalysisbb.Main'
+    mainClassName = 'de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter'
 }
 
 publishing {

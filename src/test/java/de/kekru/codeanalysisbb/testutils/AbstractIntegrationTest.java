@@ -45,7 +45,7 @@ public class AbstractIntegrationTest {
   @Before
   public void initAbstractIntegrationTest() {
     MockitoAnnotations.initMocks(this);
-    System.setProperty("configFile", configFile);
+    System.setProperty("codeAnalysisBBConfigFile", configFile);
     initBitbucketThirdPartyServiceMock();
     initTestShellExecutor();
   }
