@@ -114,11 +114,9 @@ public class SonarqubeReporter implements Reporter {
   }
 
   private String createLink(SonarIssue issue) {
-    SonarConfig sonarqubeConfig = config.getReporter().getSonarqube();
-
     return String.format("%s/project/issues?id=%s&open=%s",
         StringUtils.trimToEmpty(StringUtils.removeEnd(metaInfoService.getServerUrl(), "/")),
-        StringUtils.trimToEmpty(sonarqubeConfig.getProjectKey()),
+        StringUtils.trimToEmpty(metaInfoService.getProjectKey()),
         StringUtils.trimToEmpty(issue.getKey())
     );
   }
