@@ -33,10 +33,13 @@ java {
 
 dependencies {
     // implementation "de.kekru.java-utils:java-utils:0.0.1-SNAPSHOT"
-    implementation "com.github.kekru:java-utils:705cb080bea2153c64d7c41408bcd9ce7ebfbaf5"
+    implementation "com.github.kekru.java-utils:java-utils:0.1.0"
+    // testImplementation "de.kekru.java-utils:test-utils:0.0.1-SNAPSHOT"
+    testImplementation "com.github.kekru.java-utils:test-utils:0.1.0"
 
     implementation "org.slf4j:slf4j-api:1.7.25"
     implementation "org.slf4j:slf4j-simple:1.7.9"
+    implementation 'org.apache.jclouds.driver:jclouds-slf4j:2.2.0'
     implementation "org.yaml:snakeyaml:1.26"
     implementation "com.cdancy:bitbucket-rest:2.6.2"
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
@@ -122,7 +125,7 @@ task runnableJar(type: Jar) {
 // build.finalizedBy runnableJar
 
 application {
-    mainClassName = 'de.kekru.codeanalysisbb.Main'
+    mainClassName = 'de.kekru.codeanalysisbb.CodeAnalysisBitbucketExporter'
 }
 
 publishing {

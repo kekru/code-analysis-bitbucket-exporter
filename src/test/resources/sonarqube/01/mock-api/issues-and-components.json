@@ -1,0 +1,391 @@
+{
+  "total": 11,
+  "p": 1,
+  "ps": 500,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 500,
+    "total": 11
+  },
+  "effortTotal": 87,
+  "debtTotal": 87,
+  "issues": [
+    {
+      "key": "AXKPhF-kfWqOQR8QowS1",
+      "rule": "java:S2095",
+      "severity": "BLOCKER",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 31,
+      "hash": "76b00af644982ea3050f52495db871e5",
+      "textRange": {
+        "startLine": 31,
+        "endLine": 31,
+        "startOffset": 25,
+        "endOffset": 70
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Use try-with-resources or close this \"FileInputStream\" in a \"finally\" clause.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "cert",
+        "cwe",
+        "denial-of-service",
+        "leak"
+      ],
+      "creationDate": "2020-05-28T22:37:17+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "BUG",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-kfWqOQR8QowS2",
+      "rule": "java:S1226",
+      "severity": "MINOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 27,
+      "hash": "501b5d4968a35c5f917521eaaf72c389",
+      "textRange": {
+        "startLine": 27,
+        "endLine": 27,
+        "startOffset": 4,
+        "endOffset": 9
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Introduce a new variable instead of reusing the parameter \"input\".",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [],
+      "creationDate": "2020-05-28T22:25:30+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "BUG",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-kfWqOQR8QowS5",
+      "rule": "java:S1854",
+      "severity": "CRITICAL",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 27,
+      "hash": "501b5d4968a35c5f917521eaaf72c389",
+      "textRange": {
+        "startLine": 27,
+        "endLine": 27,
+        "startOffset": 10,
+        "endOffset": 64
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this useless assignment to local variable \"input\".",
+      "effort": "15min",
+      "debt": "15min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "cert",
+        "cwe",
+        "unused"
+      ],
+      "creationDate": "2020-05-28T22:25:30+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-kfWqOQR8QowS6",
+      "rule": "java:S1481",
+      "severity": "MINOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 23,
+      "hash": "cc0a6255cddd8480e9f99f733b0a1104",
+      "textRange": {
+        "startLine": 23,
+        "endLine": 23,
+        "startOffset": 8,
+        "endOffset": 11
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this unused \"abc\" local variable.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2020-05-23T18:35:30+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-afWqOQR8QowSz",
+      "rule": "java:S1104",
+      "severity": "MINOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/SecondClass.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 7,
+      "hash": "4236d55de61d05d6fdeeb39847c9a7a0",
+      "textRange": {
+        "startLine": 7,
+        "endLine": 7,
+        "startOffset": 17,
+        "endOffset": 26
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Make something a static final constant or non-public and provide accessors if needed.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "cwe"
+      ],
+      "creationDate": "2020-05-23T18:35:30+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "VULNERABILITY",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-ZfWqOQR8QowSy",
+      "rule": "java:S3655",
+      "severity": "MAJOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/SecondClass.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 10,
+      "hash": "570b79fc0535958f0a9e66b39d7039dc",
+      "textRange": {
+        "startLine": 10,
+        "endLine": 10,
+        "startOffset": 23,
+        "endOffset": 28
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Call \"input.isPresent()\" before accessing the value.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "cwe"
+      ],
+      "creationDate": "2020-05-23T18:35:30+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "BUG",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-afWqOQR8QowS0",
+      "rule": "java:S106",
+      "severity": "MAJOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/SecondClass.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 10,
+      "hash": "570b79fc0535958f0a9e66b39d7039dc",
+      "textRange": {
+        "startLine": 10,
+        "endLine": 10,
+        "startOffset": 4,
+        "endOffset": 14
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Replace this use of System.out or System.err by a logger.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "bad-practice",
+        "cert"
+      ],
+      "creationDate": "2020-05-23T18:35:30+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-kfWqOQR8QowS3",
+      "rule": "java:S1128",
+      "severity": "MINOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 5,
+      "hash": "5cb6e4d8f3e7b56a26deff4676cba0ab",
+      "textRange": {
+        "startLine": 5,
+        "endLine": 5,
+        "startOffset": 0,
+        "endOffset": 37
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this unused import 'java.io.FileNotFoundException'.",
+      "effort": "2min",
+      "debt": "2min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2020-05-21T21:59:27+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF8vfWqOQR8QowSx",
+      "rule": "java:S2699",
+      "severity": "BLOCKER",
+      "component": "example-code-analysis-bitbucket-exporter:src/test/java/de/kekru/example/codeanalysisbb/MainTest.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 13,
+      "hash": "3b9ae34b96c2beb34316ea30c1c4a96f",
+      "textRange": {
+        "startLine": 13,
+        "endLine": 13,
+        "startOffset": 14,
+        "endOffset": 28
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Add at least one assertion to this test case.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "tests"
+      ],
+      "creationDate": "2020-05-21T21:59:27+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-kfWqOQR8QowS7",
+      "rule": "java:S1068",
+      "severity": "MAJOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 13,
+      "hash": "0b6a4b8c3bad2c9b49605e9bab77c72f",
+      "textRange": {
+        "startLine": 13,
+        "endLine": 13,
+        "startOffset": 30,
+        "endOffset": 33
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Remove this unused \"LOG\" private field.",
+      "effort": "5min",
+      "debt": "5min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "unused"
+      ],
+      "creationDate": "2020-05-21T21:39:58+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AXKPhF-kfWqOQR8QowS4",
+      "rule": "java:S106",
+      "severity": "MAJOR",
+      "component": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "project": "example-code-analysis-bitbucket-exporter",
+      "line": 20,
+      "hash": "ec1402e93df818bb10a6098ce65feb2d",
+      "textRange": {
+        "startLine": 20,
+        "endLine": 20,
+        "startOffset": 4,
+        "endOffset": 14
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Replace this use of System.out or System.err by a logger.",
+      "effort": "10min",
+      "debt": "10min",
+      "assignee": "username",
+      "author": "xy@example.com",
+      "tags": [
+        "bad-practice",
+        "cert"
+      ],
+      "creationDate": "2020-05-21T21:39:58+0200",
+      "updateDate": "2020-06-07T18:01:44+0200",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    }
+  ],
+  "components": [
+    {
+      "organization": "default-organization",
+      "key": "example-code-analysis-bitbucket-exporter:src/test/java/de/kekru/example/codeanalysisbb/MainTest.java",
+      "uuid": "AXKPhF5MfWqOQR8QowSr",
+      "enabled": true,
+      "qualifier": "UTS",
+      "name": "MainTest.java",
+      "longName": "src/test/java/de/kekru/example/codeanalysisbb/MainTest.java",
+      "path": "src/test/java/de/kekru/example/codeanalysisbb/MainTest.java"
+    },
+    {
+      "organization": "default-organization",
+      "key": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "uuid": "AXKPhF5MfWqOQR8QowSu",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "Main.java",
+      "longName": "src/main/java/de/kekru/example/codeanalysisbb/Main.java",
+      "path": "src/main/java/de/kekru/example/codeanalysisbb/Main.java"
+    },
+    {
+      "organization": "default-organization",
+      "key": "example-code-analysis-bitbucket-exporter:src/main/java/de/kekru/example/codeanalysisbb/SecondClass.java",
+      "uuid": "AXKPhF5MfWqOQR8QowSt",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "SecondClass.java",
+      "longName": "src/main/java/de/kekru/example/codeanalysisbb/SecondClass.java",
+      "path": "src/main/java/de/kekru/example/codeanalysisbb/SecondClass.java"
+    },
+    {
+      "organization": "default-organization",
+      "key": "example-code-analysis-bitbucket-exporter",
+      "uuid": "AXKPgqPIF-HOsDxXnsut",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "example-code-analysis-bitbucket-exporter",
+      "longName": "example-code-analysis-bitbucket-exporter"
+    }
+  ],
+  "facets": []
+}

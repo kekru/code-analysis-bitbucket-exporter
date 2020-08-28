@@ -68,4 +68,21 @@ public class PropertyLoaderServiceTest {
     assertEquals("Spotbugs Code Analysis Report", config.getReporter().getSpotbugs().getTitle());
     assertEquals("Spotbugs", config.getReporter().getSpotbugs().getReporter());
   }
+
+  @Test
+  public void testPropertyLoaderWithoutPrefix() {
+
+    // Given
+    Map<String, String> props = new HashMap<>();
+    props.put("workDir", "/home/me/helloworld123");
+
+
+    Config config = new Config();
+
+    // When
+    propertyLoaderService.applyConfigProperties(config, props, ".");
+
+    // Then
+    assertEquals("/home/me/helloworld123", config.getWorkDir().replace("\\", "/"));
+  }
 }

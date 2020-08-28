@@ -1,0 +1,18 @@
+bitbucket:
+  endPoint: https://bitbucket.localhost
+  token: myToken
+  project: "some-project"
+  repo: "some-repo"
+
+reporter:
+  sonarqube:
+    enabled: true
+    stripBasePathInputXml: C:\Users\krummenauer\workspace\no-ci-plugin
+    key: sonar-key
+    title: Sonarqube Report
+    reporter: Sonarqube
+    serverUrl: https://sonarqube.localhost
+    login: 123456789
+    projectKey: "example-code-analysis-bitbucket-exporter"
+    branch: master
+    reportTaskFile: "src/test/resources/sonarqube/01/report-task.txt"
