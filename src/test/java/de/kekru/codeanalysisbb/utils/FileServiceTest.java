@@ -18,7 +18,7 @@ public class FileServiceTest {
 
   private static final Logger LOG = LoggerFactory.getLogger(FileServiceTest.class);
 
-  @Parameters(name = "{index}: Modify {0} with {1}, expect {2}")
+  @Parameters(name = "{index}: Modify {0} with {1}, adding {2}, expect {3}")
   public static Collection<Object[]> data() {
     return Arrays.asList(new Object[][]{
         {
@@ -26,6 +26,7 @@ public class FileServiceTest {
             Arrays.asList(
                 "C:\\Users\\someone\\workspace\\codeanalysisbb"
             ),
+            "",
             "src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
@@ -34,6 +35,7 @@ public class FileServiceTest {
                 "C:\\Users\\someone\\workspace\\codeanalysisbb\\",
                 "C:\\Users\\someone\\workspace\\codeanalysisbb\\"
             ),
+            "",
             "src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
@@ -42,6 +44,7 @@ public class FileServiceTest {
                 "C:/Users/someone/workspace/codeanalysisbb",
                 "C:\\does-not-exist"
             ),
+            "",
             "src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
@@ -50,14 +53,24 @@ public class FileServiceTest {
                 "C:/Users/someone/workspace/codeanalysisbb",
                 "C:\\does-not-exist"
             ),
-            "src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
+            "/new-dir",
+            "new-dir/src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
             "/home/someone/src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java",
             Arrays.asList(
                 "/home/someone/src/main/java"
             ),
-            "de/kekru/codeanalysisbb/config/ConfigProvider.java"
+            "new-prefix/sub/dir",
+            "new-prefix/sub/dir/de/kekru/codeanalysisbb/config/ConfigProvider.java"
+        },
+        {
+            "/home/someone/src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java",
+            Arrays.asList(
+                "/home/someone/src/main/java"
+            ),
+            "new-prefix/sub/dir/",
+            "new-prefix/sub/dir/de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
             "/home/someone/src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java",
@@ -66,6 +79,7 @@ public class FileServiceTest {
                 "/home/someone/src/main/java",
                 "/home/someone/src/main/java"
             ),
+            "",
             "de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
@@ -73,6 +87,7 @@ public class FileServiceTest {
             Arrays.asList(
                 "/home/someone/src/main/java/"
             ),
+            "",
             "de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
         {
@@ -82,6 +97,7 @@ public class FileServiceTest {
                 "",
                 "/home/someone"
             ),
+            "",
             "src/main/java/de/kekru/codeanalysisbb/config/ConfigProvider.java"
         },
     });
@@ -94,6 +110,9 @@ public class FileServiceTest {
   public List<String> prefixes;
 
   @Parameter(2)
+  public String addPrefix;
+
+  @Parameter(3)
   public String result;
 
   @Test
@@ -104,7 +123,7 @@ public class FileServiceTest {
         target, prefixes, result));
 
     String modifiedPath = fileservice
-        .relativizeAndCleanupPath(target, prefixes);
+        .relativizeAndCleanupPath(target, prefixes, addPrefix);
 
     assertEquals(result, modifiedPath);
   }

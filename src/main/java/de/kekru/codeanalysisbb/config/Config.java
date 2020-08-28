@@ -50,6 +50,7 @@ public class Config {
   public static class PmdConfig implements LocalXmlReporterConfig {
     private List<String> inputXmls = new LinkedList<>();
     private String stripBasePathInputXml;
+    private String addBasePathPrefix;
     private boolean enabled = true;
     private String key;
     private String title;
@@ -66,6 +67,7 @@ public class Config {
   public static class SpotbugsConfig implements LocalXmlReporterConfig {
     private List<String> inputXmls = new LinkedList<>();
     private String stripBasePathInputXml;
+    private String addBasePathPrefix;
     private boolean enabled = true;
     private String key;
     private String title;
@@ -82,6 +84,7 @@ public class Config {
   public static class SonarConfig implements ReporterConfig {
     private boolean enabled = true;
     private String stripBasePathInputXml;
+    private String addBasePathPrefix;
     private String key;
     private String title;
     private String reporter;

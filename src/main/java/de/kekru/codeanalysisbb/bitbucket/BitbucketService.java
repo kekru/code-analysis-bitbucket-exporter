@@ -99,7 +99,7 @@ public class BitbucketService {
     String relativeFileName = fileService.relativizeAndCleanupPath(pathString, Arrays.asList(
         reporterConfig.getStripBasePathInputXml(),
         config.getWorkDir()
-    ));
+    ), reporterConfig.getAddBasePathPrefix());
 
     annotation.setMessage(shorten(annotation.getMessage(), 2000));
     annotation.setPath(relativeFileName);

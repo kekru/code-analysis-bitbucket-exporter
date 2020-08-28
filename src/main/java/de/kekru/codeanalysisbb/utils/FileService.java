@@ -27,7 +27,7 @@ public class FileService {
 
   private final Config config;
 
-  public String relativizeAndCleanupPath(final String target, List<String> stripPathPrefixes) {
+  public String relativizeAndCleanupPath(final String target, List<String> stripPathPrefixes, String addPathPrefix) {
     String modifiedTarget = replaceBackslashesAndTrim(target);
 
     for (final String prefix : stripPathPrefixes) {
@@ -36,6 +36,13 @@ public class FileService {
       if (StringUtils.startsWith(modifiedTarget, prefixModified)) {
         modifiedTarget = StringUtils.removeStart(modifiedTarget, prefixModified);
       }
+    }
+
+    modifiedTarget = StringUtils.removeStart(modifiedTarget, "/");
+
+    final String addPathPrefixModified = StringUtils.removeEnd(replaceBackslashesAndTrim(addPathPrefix), "/");
+    if (StringUtils.isNotBlank(addPathPrefixModified)) {
+      modifiedTarget = addPathPrefixModified + "/" + modifiedTarget;
     }
 
     final String result = StringUtils.removeStart(modifiedTarget, "/");

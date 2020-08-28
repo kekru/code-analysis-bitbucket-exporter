@@ -57,6 +57,11 @@ reporter:
     # e.g. /home/me/my-project/src/main/java/de/kekru/Main.java will become src/main/java/de/kekru/Main.java
     # Defaults to workDir
     stripBasePathInputXml: /home/me/my-project
+    # Optional:
+    # path that should be added as prefix to source files, after being shortened by "stripBasePathInputXml"
+    # e.g. src/main/java/de/kekru/Main.java will become new/sub-directory/src/main/java/de/kekru/Main.java
+    # Defaults to empty string 
+    addBasePathPrefix: new/sub-directory
     # Optional: Whether this reporter is enabled, defaults to true
     enabled: true
     # URL-safe key to identify an analyser in Bitbucket
@@ -78,6 +83,7 @@ reporter:
       - "build/reports/spotbugs/main.xml"
       - "build/reports/spotbugs/test.xml"
     stripBasePathInputXml: /home/me/my-project
+    addBasePathPrefix:
     enabled: true
     key: spotbugs-key
     title: Spotbugs Code Analysis Report
@@ -90,6 +96,7 @@ reporter:
   sonarqube:
     enabled: true
     stripBasePathInputXml: /home/me/my-project
+    addBasePathPrefix:
     key: sonar-key
     title: Sonarqube Report
     reporter: Sonarqube
