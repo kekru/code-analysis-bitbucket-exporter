@@ -33,9 +33,9 @@ java {
 
 dependencies {
     // implementation "de.kekru.java-utils:java-utils:0.0.1-SNAPSHOT"
-    implementation "com.github.kekru.java-utils:java-utils:0309ab75bf376f189945c1372e6c6e7b7fee3a68"
+    implementation "com.github.kekru.java-utils:java-utils:0.1.0"
     // testImplementation "de.kekru.java-utils:test-utils:0.0.1-SNAPSHOT"
-    testImplementation "com.github.kekru.java-utils:test-utils:0309ab75bf376f189945c1372e6c6e7b7fee3a68"
+    testImplementation "com.github.kekru.java-utils:test-utils:0.1.0"
 
     implementation "org.slf4j:slf4j-api:1.7.25"
     implementation "org.slf4j:slf4j-simple:1.7.9"
